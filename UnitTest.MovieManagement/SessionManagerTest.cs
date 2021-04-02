@@ -57,8 +57,8 @@ namespace UnitTest.MovieManagement
         {
             // Pass
             var sessionManager = GetSessionManager(TestScenario.PASS_BOOL_RETURN);
-            bool ret = sessionManager.Login("testUser1", "P@ssw0rd");
-            Assert.IsTrue(ret);
+            UserInfo ret = sessionManager.Login("testUser1", "P@ssw0rd");
+            Assert.AreEqual(ret.Name, "testUser1");
 
             // Fail
             sessionManager = GetSessionManager(TestScenario.FAIL_BOOL_RETURN);
