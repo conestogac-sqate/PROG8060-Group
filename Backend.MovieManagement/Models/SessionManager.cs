@@ -14,11 +14,11 @@ namespace PROG8060_Group.Models
             _connectionFactory = connectionFactory;
         }
 
-        public bool Login(string username, string password)
+        public UserInfo Login(string username, string password)
         {
             try
             {
-                bool ret = false;
+                bool ret = false; UserInfo userInfo = new UserInfo();
                 using (var connection = _connectionFactory.CreateConnection())
                 {
                     using (IDbCommand command = connection.CreateCommand())
@@ -42,15 +42,29 @@ namespace PROG8060_Group.Models
                         pRet.DbType = DbType.Int32;
                         pRet.Size = 50;
                         command.Parameters.Add(pRet);
+
+                        IDbDataParameter pAdmin = command.CreateParameter();
+                        pAdmin.ParameterName = "@oIsAdmin";
+                        pAdmin.Direction = ParameterDirection.Output;
+                        pAdmin.DbType = DbType.Int32;
+                        pAdmin.Size = 50;
+                        command.Parameters.Add(pAdmin);
+
                         connection.Open();
                         command.ExecuteNonQuery();
                         connection.Close();
                         ret = Convert.ToBoolean(pRet.Value);
+                        userInfo.Name = username;
+                        if (Convert.ToBoolean(pAdmin.Value))
+                        {
+                            userInfo.CanCreate = userInfo.CanDelete = userInfo.CanUpdate = true;
+                        }
+                        userInfo.CanRead = true;
                     }
 
                     if (!ret) throw new Exception();
                 }
-                return ret;
+                return userInfo;
             }
             catch (Exception ex)
             {

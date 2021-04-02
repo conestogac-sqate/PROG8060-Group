@@ -21,7 +21,7 @@ namespace IntegrationTest.MovieManagement
             client.Timeout = -1;
             request = new RestRequest(Method.POST);
             response = client.Execute(request);
-            ApiResult sessionDto = JsonConvert.DeserializeObject<ApiSuccess<bool>>(response.Content);
+            ApiResult sessionDto = JsonConvert.DeserializeObject<ApiSuccess<UserInfo>>(response.Content);
             Assert.IsTrue(sessionDto.Success);
 
             // Prerequisite - Fail

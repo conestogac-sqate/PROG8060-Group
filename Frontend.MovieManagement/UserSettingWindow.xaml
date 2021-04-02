@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI.MovieManagement"
         mc:Ignorable="d"
-        Title="UserSettingWindow" Height="450" Width="500">
+        WindowStartupLocation="CenterScreen"
+        Title="UserSettingWindow" Height="400" Width="500">
     <Grid>
         <Label x:Name="lblSubHeader" Content="Movie Management System" HorizontalAlignment="Left" Margin="159,30,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblHeader" Content="User Settings" HorizontalAlignment="Left" Margin="192,61,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnAddUser" Content="Add New User" HorizontalAlignment="Left" Margin="364,104,0,0" VerticalAlignment="Top" Width="97"/>
-        <DataGrid x:Name="dUsers" HorizontalAlignment="Left" Height="243" Margin="36,139,0,0" VerticalAlignment="Top" Width="425"/>
+        <DataGrid x:Name="dUsers" HorizontalAlignment="Left" Height="234" Margin="36,108,0,0" VerticalAlignment="Top" Width="425"/>
 
     </Grid>
 </Window>

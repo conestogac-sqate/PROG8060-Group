@@ -20,7 +20,7 @@ namespace IntegrationTest.MovieManagement
             Assert.IsTrue(movieDto.Success);
             movieId = (int)movieDto.Data;
 
-            client = new RestClient("https://localhost:44343/Movie/Add?title=titleAdd&director=directorAdd&genre=genreAdd&cast=castAdd&year=2021&award=awardAdd");
+            client = new RestClient("https://localhost:44343/Movie/Add?title=title1&director=director1&genre=genre&cast=cast1&year=2021&award=award1");
             client.Timeout = -1;
             request = new RestRequest(Method.POST);
             response = client.Execute(request);

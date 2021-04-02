@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Newtonsoft.Json;
+using PROG8060_Group.Models;
+using RestSharp;
 
 namespace UI.MovieManagement
 {
@@ -20,6 +23,9 @@ namespace UI.MovieManagement
     /// </summary>
     public partial class LoginWindow : Window
     {
+        public delegate void LoginStatusCallback(UserInfo userInfo, bool isLogin);
+        public LoginStatusCallback OnLoginStatusCallback;
+
         public LoginWindow()
         {
             InitializeComponent();
@@ -27,7 +33,21 @@ namespace UI.MovieManagement
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            if (OnLoginStatusCallback == null) { MessageBox.Show("Unable to submit movie due to invalid listener"); return; }
 
+            this.IsEnabled = false;
+
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+
+            ApiResult ret = APIController.RequestLogin(username, password);
+            if(!ret.Success)
+            {
+                MessageBox.Show("Unable to login");
+                this.IsEnabled = true;
+                return;
+            }
+            OnLoginStatusCallback((UserInfo)ret.Data, true);
         }
     }
 }

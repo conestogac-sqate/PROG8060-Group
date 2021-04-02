@@ -244,13 +244,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\PROG8060-Group\Models\Structs\ApiResult.cs">
+    <Compile Include="..\Backend.MovieManagement\Models\Structs\ApiResult.cs">
       <Link>Structs\ApiResult.cs</Link>
     </Compile>
-    <Compile Include="..\PROG8060-Group\Models\Structs\MovieInfo.cs">
+    <Compile Include="..\Backend.MovieManagement\Models\Structs\MovieInfo.cs">
       <Link>Structs\MovieInfo.cs</Link>
     </Compile>
-    <Compile Include="..\PROG8060-Group\Models\Structs\UserInfo.cs">
+    <Compile Include="..\Backend.MovieManagement\Models\Structs\UserInfo.cs">
       <Link>Structs\UserInfo.cs</Link>
     </Compile>
     <Compile Include="MovieControllerTest.cs" />

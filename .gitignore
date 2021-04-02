@@ -155,3 +155,5 @@ IntegrationTest.MovieManagement/.vs/IntegrationTest.MovieManagement/v16/.suo
 IntegrationTest.MovieManagement/.vs/IntegrationTest.MovieManagement/v16/TestStore/0/001.testlog
 IntegrationTest.MovieManagement/.vs/IntegrationTest.MovieManagement/v16/TestStore/0/testlog.manifest
 /Frontend.MovieManagement/bin
+.vs/
+packages/
