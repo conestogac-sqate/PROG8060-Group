@@ -142,3 +142,16 @@ x64
 BouncyCastle.Crypto.dll
 Debug
 Release
+.vs/IntegrationTest.MovieManagement/v16/.suo
+.vs/IntegrationTest.MovieManagement/v16/TestStore/0/000.testlog
+.vs/IntegrationTest.MovieManagement/v16/TestStore/0/testlog.manifest
+.vs/PROG8060-Group/config/applicationhost.config
+.vs/PROG8060-Group/v16/.suo
+.vs/UnitTest.MovieManagement/config/applicationhost.config
+.vs/UnitTest.MovieManagement/v16/.suo
+.vs/UnitTest.MovieManagement/v16/TestStore/0/000.testlog
+.vs/UnitTest.MovieManagement/v16/TestStore/0/testlog.manifest
+IntegrationTest.MovieManagement/.vs/IntegrationTest.MovieManagement/v16/.suo
+IntegrationTest.MovieManagement/.vs/IntegrationTest.MovieManagement/v16/TestStore/0/001.testlog
+IntegrationTest.MovieManagement/.vs/IntegrationTest.MovieManagement/v16/TestStore/0/testlog.manifest
+/Frontend.MovieManagement/bin
