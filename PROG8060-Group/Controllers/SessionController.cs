@@ -99,6 +99,7 @@ namespace PROG8060_Group.Controllers
             try
             {
                 UserInfo ret = _sessionManager.GetUser(username);
+
                 return new JsonResult()
                 {
                     Data = new ApiSuccess<UserInfo>(ret),
@@ -107,7 +108,11 @@ namespace PROG8060_Group.Controllers
             }
             catch (Exception ex)
             {
-                return Json(new ApiError($"{ex.Message}"));
+                return new JsonResult()
+                {
+                    Data = new ApiError($"{ex.Message}"),
+                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                };
             }
         }
     }

@@ -24,8 +24,8 @@ namespace PROG8060_Group.Controllers
             SecurityManager.Authorize(Request);
             try
             {
-                bool ret = _movieManager.AddMovie(new MovieInfo(title, director, genre, cast, year, award));
-                return Json(new ApiSuccess<bool>(ret));
+                int ret = _movieManager.AddMovie(new MovieInfo(title, director, genre, cast, year, award));
+                return Json(new ApiSuccess<int>(ret));
             }
             catch (Exception ex)
             {
@@ -93,7 +93,11 @@ namespace PROG8060_Group.Controllers
             }
             catch (Exception ex)
             {
-                return Json(new ApiError($"{ex.Message}"));
+                return new JsonResult()
+                {
+                    Data = new ApiError($"{ex.Message}"),
+                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                };
             }
         }
 
@@ -112,7 +116,11 @@ namespace PROG8060_Group.Controllers
             }
             catch (Exception ex)
             {
-                return Json(new ApiError($"{ex.Message}"));
+                return new JsonResult()
+                {
+                    Data = new ApiError($"{ex.Message}"),
+                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                };
             }
         }
 
@@ -131,7 +139,11 @@ namespace PROG8060_Group.Controllers
             }
             catch (Exception ex)
             {
-                return Json(new ApiError($"{ex.Message}"));
+                return new JsonResult()
+                {
+                    Data = new ApiError($"{ex.Message}"),
+                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                };
             }
         }
 
@@ -150,7 +162,11 @@ namespace PROG8060_Group.Controllers
             }
             catch (Exception ex)
             {
-                return Json(new ApiError($"{ex.Message}"));
+                return new JsonResult()
+                {
+                    Data = new ApiError($"{ex.Message}"),
+                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                };
             }
         }
 
@@ -169,7 +185,11 @@ namespace PROG8060_Group.Controllers
             }
             catch(Exception ex)
             {
-                return Json(new ApiError($"{ex.Message}"));
+                return new JsonResult()
+                {
+                    Data = new ApiError($"{ex.Message}"),
+                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                };
             }
         }
     }

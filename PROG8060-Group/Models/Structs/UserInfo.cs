@@ -7,19 +7,21 @@ namespace PROG8060_Group.Models
 {
     public class UserInfo
     {
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
-        public string Password { get; private set; }
+        public string Password { get; set; }
 
-        public string Email { get; private set; }
+        public string Email { get; set; }
 
-        public bool CanCreate { get; private set; }
+        public bool CanCreate { get; set; }
 
-        public bool CanUpdate { get; private set; }
+        public bool CanUpdate { get; set; }
 
-        public bool CanRead { get; private set; }
+        public bool CanRead { get; set; }
 
-        public bool CanDelete { get; private set; }
+        public bool CanDelete { get; set; }
+
+        public UserInfo() { }
 
         public UserInfo(string name, string email, bool canCreate, bool canUpdate, bool canRead, bool canDelete)
         {
