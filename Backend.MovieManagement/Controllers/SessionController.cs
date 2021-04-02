@@ -23,8 +23,8 @@ namespace PROG8060_Group.Controllers
             SecurityManager.Authorize(Request);
             try
             {
-                bool ret = _sessionManager.Login(username, password);
-                return Json(new ApiSuccess<bool>(ret));
+                UserInfo ret = _sessionManager.Login(username, password);
+                return Json(new ApiSuccess<UserInfo>(ret));
             }
             catch (Exception ex)
             {
