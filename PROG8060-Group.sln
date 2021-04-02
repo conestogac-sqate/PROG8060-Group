@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROG8060-Group", "PROG8060-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest.MovieManagement", "UnitTest.MovieManagement\UnitTest.MovieManagement.csproj", "{44115C62-E7A6-403E-B241-3DAD6C47331E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTest.MovieManagement", "IntegrationTest.MovieManagement\IntegrationTest.MovieManagement.csproj", "{DFBF7F51-D396-4A2A-84C1-0EB998F69C30}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{44115C62-E7A6-403E-B241-3DAD6C47331E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{44115C62-E7A6-403E-B241-3DAD6C47331E}.Release|x64.ActiveCfg = Release|Any CPU
 		{44115C62-E7A6-403E-B241-3DAD6C47331E}.Release|x64.Build.0 = Release|Any CPU
+		{DFBF7F51-D396-4A2A-84C1-0EB998F69C30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFBF7F51-D396-4A2A-84C1-0EB998F69C30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFBF7F51-D396-4A2A-84C1-0EB998F69C30}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DFBF7F51-D396-4A2A-84C1-0EB998F69C30}.Debug|x64.Build.0 = Debug|Any CPU
+		{DFBF7F51-D396-4A2A-84C1-0EB998F69C30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFBF7F51-D396-4A2A-84C1-0EB998F69C30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFBF7F51-D396-4A2A-84C1-0EB998F69C30}.Release|x64.ActiveCfg = Release|Any CPU
+		{DFBF7F51-D396-4A2A-84C1-0EB998F69C30}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

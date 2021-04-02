@@ -7,21 +7,23 @@ namespace PROG8060_Group.Models
 {
     public class MovieInfo
     {
-        public int Id { get; private set; }
+        public int Id { get; set; }
 
-        public string Title { get; private set; }
+        public string Title { get; set; }
 
-        public string Director { get; private set; }
+        public string Director { get; set; }
 
-        public string Genere { get; private set; }
+        public string Genere { get; set; }
 
-        public string Cast { get; private set; }
+        public string Cast { get; set; }
 
-        public int Year { get; private set; }
+        public int Year { get; set; }
 
-        public string Award { get; private set; }
+        public string Award { get; set; }
 
-        public bool IsOnShow { get; private set; }
+        public bool IsOnShow { get; set; }
+
+        public MovieInfo() { }
 
         public MovieInfo(string title, string director, string genere, string cast, int year, string award)
         {

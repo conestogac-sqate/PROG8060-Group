@@ -14,11 +14,11 @@ namespace PROG8060_Group.Models
             _connectionFactory = connectionFactory;
         }
 
-        public bool AddMovie(MovieInfo movieInfo)
+        public int AddMovie(MovieInfo movieInfo)
         {
             try
             {
-                bool ret = false;
+                int id = -1;
                 using (var connection = _connectionFactory.CreateConnection())
                 {
                     using (IDbCommand command = connection.CreateCommand())
@@ -56,26 +56,26 @@ namespace PROG8060_Group.Models
                         pAward.Value = movieInfo.Award;
                         command.Parameters.Add(pAward);
 
-                        IDbDataParameter pRet = command.CreateParameter();
-                        pRet.ParameterName = "@oRet";
-                        pRet.Direction = ParameterDirection.Output;
-                        pRet.DbType = DbType.Int32;
-                        pRet.Size = 50;
-                        command.Parameters.Add(pRet);
+                        IDbDataParameter pId = command.CreateParameter();
+                        pId.ParameterName = "@oId";
+                        pId.Direction = ParameterDirection.Output;
+                        pId.DbType = DbType.Int32;
+                        pId.Size = 50;
+                        command.Parameters.Add(pId);
+
                         connection.Open();
                         command.ExecuteNonQuery();
                         connection.Close();
-                        ret = Convert.ToBoolean(pRet.Value);
+                        id = Convert.ToInt32(pId.Value);
                     }
-                    if (!ret) throw new Exception();
+                    if (id <= 0) throw new Exception();
                 }
-                return ret;
+                return id;
             }
             catch (Exception ex)
             {
                 throw new Exception($"Unable to add movie. {ex.Message}");
             }
-            return true;
         }
 
         public bool UpdateMovie(MovieInfo movieInfo)
@@ -375,7 +375,7 @@ namespace PROG8060_Group.Models
 
                         IDbDataParameter pPrefix = command.CreateParameter();
                         pPrefix.ParameterName = "@iPrefix";
-                        pPrefix.Value = isOnShow;
+                        pPrefix.Value = prefix;
                         command.Parameters.Add(pPrefix);
 
                         IDbDataParameter pOnShow = command.CreateParameter();

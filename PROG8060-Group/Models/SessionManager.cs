@@ -107,7 +107,7 @@ namespace PROG8060_Group.Models
                     using (IDbCommand command = connection.CreateCommand())
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.CommandText = "sp_add_update_user";
+                        command.CommandText = "sp_add_user";
 
                         IDbDataParameter pUsername = command.CreateParameter();
                         pUsername.ParameterName = "@iUsername";
@@ -176,7 +176,7 @@ namespace PROG8060_Group.Models
                     using (IDbCommand command = connection.CreateCommand())
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.CommandText = "sp_add_update_user";
+                        command.CommandText = "sp_update_user";
 
                         IDbDataParameter pUsername = command.CreateParameter();
                         pUsername.ParameterName = "@iUsername";

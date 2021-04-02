@@ -1,5 +1,6 @@
 ﻿using Moq;
 using NUnit.Framework;
+using NUnit.Framework.Internal;
 using PROG8060_Group.Models;
 using PROG8060_Group.Models.DB;
 using System;
@@ -57,8 +58,8 @@ namespace UnitTest.MovieManagement
         {
             // Pass
             var movieManager = GetMovieManager(TestScenario.PASS_BOOL_RETURN);
-            bool ret = movieManager.AddMovie(new MovieInfo("title1", "director1", "genere1", "cast1", 2020, "award1"));
-            Assert.IsTrue(ret);
+            int ret = movieManager.AddMovie(new MovieInfo("title1", "director1", "genere1", "cast1", 2020, "award1"));
+            Assert.IsTrue(TypeHelper.IsNumeric(ret.GetType()));
 
             // Fail
             movieManager = GetMovieManager(TestScenario.FAIL_BOOL_RETURN);
