@@ -142,3 +142,4 @@ x64
 BouncyCastle.Crypto.dll
 Debug
 Release
+.vs/
