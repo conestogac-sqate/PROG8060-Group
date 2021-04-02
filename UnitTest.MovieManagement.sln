@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest.MovieManagement", "UnitTest.MovieManagement\UnitTest.MovieManagement.csproj", "{44115C62-E7A6-403E-B241-3DAD6C47331E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROG8060-Group", "PROG8060-Group\PROG8060-Group.csproj", "{578AFFFA-9C13-46BB-9543-E7A4E424E1BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.MovieManagement", "Backend.MovieManagement\Backend.MovieManagement.csproj", "{578AFFFA-9C13-46BB-9543-E7A4E424E1BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
