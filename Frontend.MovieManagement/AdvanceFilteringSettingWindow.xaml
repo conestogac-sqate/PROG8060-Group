@@ -5,17 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI.MovieManagement"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="AdvanceFilteringSettingWindow" Height="450" Width="500">
     <Grid>
-        <Label x:Name="lblSubHeader" Content="Movie Management System" HorizontalAlignment="Left" Margin="159,30,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblHeader" Content="Edit The Movie" HorizontalAlignment="Left" Margin="192,61,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="rBtnNotPlaying" Content="Not Playing" HorizontalAlignment="Left" Margin="181,165,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="rBtnNowPlaying" Content="Now Playing" HorizontalAlignment="Left" Margin="286,165,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblPlayingStatus" Content="Playing Status" HorizontalAlignment="Left" Margin="56,158,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="206,219,0,0" VerticalAlignment="Top" Width="75" Click="btnSave_Click"/>
-        <Label x:Name="lblSearchRange" Content="Search Range:" HorizontalAlignment="Left" Margin="55,92,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblTitle" Content="*Title" HorizontalAlignment="Left" Margin="55,127,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtTitle" HorizontalAlignment="Left" Height="23" Margin="125,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
-
+        <Label x:Name="lblSubHeader" Content="Movie Management System" HorizontalAlignment="Left" Margin="172,30,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblHeader" Content="Advance Search" HorizontalAlignment="Left" Margin="205,61,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rBtnNotPlaying" Content="Not Playing" HorizontalAlignment="Left" Margin="142,308,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rBtnNowPlaying" Content="Now Playing" HorizontalAlignment="Left" Margin="241,308,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rBtnClearAll" Content="Clear All" HorizontalAlignment="Left" Margin="347,308,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <Label x:Name="lblStatus" Content="Status" HorizontalAlignment="Left" Margin="67,301,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="218,354,0,0" VerticalAlignment="Top" Width="75" Click="btnSearch_Click"/>
+        <Label x:Name="lblSearchRange" Content="Search Range:" HorizontalAlignment="Left" Margin="68,92,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="lblTitle" Content="Title" HorizontalAlignment="Left" Margin="68,127,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtTitle" HorizontalAlignment="Left" Height="23" Margin="138,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="275"/>
+        <Label x:Name="lblYear" Content="Year" HorizontalAlignment="Left" Margin="68,242,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtYear" HorizontalAlignment="Left" Height="23" Margin="138,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="274" PreviewTextInput="NumberValidationTextBox"/>
+        <Label x:Name="lblDirector" Content="Director" HorizontalAlignment="Left" Margin="68,155,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDirector" HorizontalAlignment="Left" Height="23" Margin="138,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="275"/>
+        <Label x:Name="lblGenre" Content="Genre" HorizontalAlignment="Left" Margin="68,183,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtGenre" HorizontalAlignment="Left" Height="23" Margin="138,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="275"/>
+        <Label x:Name="lblCast" Content="Cast" HorizontalAlignment="Left" Margin="68,211,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtCast" HorizontalAlignment="Left" Height="23" Margin="138,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="275"/>
+        <Label x:Name="lblAward" Content="Award" HorizontalAlignment="Left" Margin="67,271,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtAward" HorizontalAlignment="Left" Height="23" Margin="137,274,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="275"/>
     </Grid>
 </Window>

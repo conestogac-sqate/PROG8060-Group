@@ -21,6 +21,8 @@ namespace PROG8060_Group.Models
 
         public bool CanDelete { get; set; }
 
+        public bool IsAdmin { get; set; }
+
         public UserInfo() { }
 
         public UserInfo(string name, string email, bool canCreate, bool canUpdate, bool canRead, bool canDelete)
@@ -31,6 +33,17 @@ namespace PROG8060_Group.Models
             this.CanUpdate = canUpdate;
             this.CanRead = canRead;
             this.CanDelete = canDelete;
+        }
+
+        public UserInfo(string name, string email, bool canCreate, bool canUpdate, bool canRead, bool canDelete, bool isAdmin)
+        {
+            this.Name = name;
+            this.Email = email;
+            this.CanCreate = canCreate;
+            this.CanUpdate = canUpdate;
+            this.CanRead = canRead;
+            this.CanDelete = canDelete;
+            this.IsAdmin = isAdmin;
         }
 
         public UserInfo(string name, string password, string email, bool canCreate, bool canUpdate, bool canRead, bool canDelete)

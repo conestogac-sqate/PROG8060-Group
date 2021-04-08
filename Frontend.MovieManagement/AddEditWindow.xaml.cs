@@ -26,14 +26,14 @@ namespace UI.MovieManagement
 
         public enum ActionType { Create = 0, Edit = 1 }
         private ActionType _actionType;
-        private int _movieId = -1;
+        private MovieInfo _movieInfo = null;
 
-        public AddEditWindow(ActionType actionType = ActionType.Create, int movieId = -1)
+        public AddEditWindow(ActionType actionType = ActionType.Create, MovieInfo movieInfo = null)
         {
             InitializeComponent();
 
             this._actionType = actionType;
-            this._movieId = movieId;
+            this._movieInfo = movieInfo == null ? new MovieInfo() : movieInfo;
             if (actionType == ActionType.Create)
             {
                 lblHeader.Content = "Add New Movie";
@@ -43,31 +43,56 @@ namespace UI.MovieManagement
             {
                 lblHeader.Content = "Edit The Movie";
                 btnSubmit.Content = "EDIT MOVIE";
-            }
+                if (movieInfo == null) { MessageBox.Show("Unable to load movie info."); return; }
+                txtTitle.Text = movieInfo.Title;
+                txtDirector.Text = movieInfo.Director;
+                txtGenre.Text = movieInfo.Genere;
+                txtCast.Text = movieInfo.Cast;
+                txtYear.Text = movieInfo.Year.ToString();
+                txtAwards.Text = movieInfo.Award;
+                rBtnNowPlaying.IsChecked = movieInfo.IsOnShow;
+                rBtnNotPlaying.IsChecked = !rBtnNowPlaying.IsChecked;
+            }   
         }
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
             if (OnMovieActionCallback == null) { MessageBox.Show("Unable to submit movie due to invalid listener"); return; }
+            if(string.IsNullOrEmpty(txtTitle.Text) ||
+               string.IsNullOrEmpty(txtDirector.Text) ||
+               string.IsNullOrEmpty(txtGenre.Text) ||
+               string.IsNullOrEmpty(txtYear.Text))
+            {
+                MessageBox.Show("Invalid Input");
+                return;
+            }
 
-            MovieInfo movieInfo = new MovieInfo();
-            movieInfo.Title = txtTitle.Text;
-            movieInfo.Director = txtDirector.Text;
-            movieInfo.Genere = txtGenre.Text;
-            movieInfo.Cast = txtCast.Text;
-            movieInfo.Year = Convert.ToInt32(txtYear.Text);
-            movieInfo.Award = txtAwards.Text;
-            movieInfo.IsOnShow = rBtnNotPlaying.IsChecked ?? false;
+            _movieInfo.Title = txtTitle.Text;
+            _movieInfo.Director = txtDirector.Text;
+            _movieInfo.Genere = txtGenre.Text;
+            _movieInfo.Cast = txtCast.Text;
+            _movieInfo.Year = Convert.ToInt32(txtYear.Text);
+            _movieInfo.Award = txtAwards.Text;
+            _movieInfo.IsOnShow = !rBtnNotPlaying.IsChecked ?? false;
 
-            ApiResult ret = APIController.RequestAddMovie(movieInfo);
+            ApiResult ret = null;
+
+            if(_actionType == ActionType.Create)
+            {
+                ret = APIController.RequestAddMovie(_movieInfo);
+            }
+            else
+            {
+                ret = APIController.RequestEditMovie(_movieInfo);
+            }
             if (!ret.Success) { MessageBox.Show("Unable to Submit Movie Infomation"); return; }
             if (_actionType == ActionType.Create)
             {
-                movieInfo.Id = (int)ret.Data;
+                _movieInfo.Id = (int)ret.Data;
             }
 
             MessageBox.Show("Movie Submit Success!");
-            OnMovieActionCallback(ret.Success, movieInfo);
+            OnMovieActionCallback(ret.Success, _movieInfo);
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)

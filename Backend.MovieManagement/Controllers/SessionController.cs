@@ -92,6 +92,21 @@ namespace PROG8060_Group.Controllers
             }
        }
 
+        [HttpPut]
+        public ActionResult UpdateUserRole(string username, bool canCreate, bool canUpdate, bool canRead, bool canDelete)
+        {
+            SecurityManager.Authorize(Request);
+            try
+            {
+                bool ret = _sessionManager.UpdateUserRole(username, canCreate, canUpdate, canRead, canDelete);
+                return Json(new ApiSuccess<bool>(ret));
+            }
+            catch (Exception ex)
+            {
+                return Json(new ApiError($"{ex.Message}"));
+            }
+        }
+
         [HttpGet]
         public ActionResult GetUser(string username)
         {
@@ -103,6 +118,30 @@ namespace PROG8060_Group.Controllers
                 return new JsonResult()
                 {
                     Data = new ApiSuccess<UserInfo>(ret),
+                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult()
+                {
+                    Data = new ApiError($"{ex.Message}"),
+                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                };
+            }
+        }
+
+        [HttpGet]
+        public ActionResult GetUsersAll()
+        {
+            SecurityManager.Authorize(Request);
+            try
+            {
+                UserInfo[] ret = _sessionManager.GetUsersAll();
+
+                return new JsonResult()
+                {
+                    Data = new ApiSuccess<UserInfo[]>(ret),
                     JsonRequestBehavior = JsonRequestBehavior.AllowGet
                 };
             }

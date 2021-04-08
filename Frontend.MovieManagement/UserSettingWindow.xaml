@@ -6,11 +6,43 @@
         xmlns:local="clr-namespace:UI.MovieManagement"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="UserSettingWindow" Height="400" Width="500">
-    <Grid>
+        Title="UserSettingWindow" Height="431.329" Width="500">
+    <Grid Margin="0,0,0.333,0">
         <Label x:Name="lblSubHeader" Content="Movie Management System" HorizontalAlignment="Left" Margin="159,30,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblHeader" Content="User Settings" HorizontalAlignment="Left" Margin="192,61,0,0" VerticalAlignment="Top"/>
-        <DataGrid x:Name="dUsers" HorizontalAlignment="Left" Height="234" Margin="36,108,0,0" VerticalAlignment="Top" Width="425"/>
+        <TabControl HorizontalAlignment="Left" Height="268" Margin="26,92,0,0" VerticalAlignment="Top" Width="438">
+            <TabItem Header="View" x:Name="tabView">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="dUsers" HorizontalAlignment="Left" Height="234" Margin="0,0,0,0" VerticalAlignment="Top" Width="431" BeginningEdit="dUsers_BeginningEdit">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Name}" IsReadOnly="True" Width="210" x:Name="colId" ClipboardContentBinding="{x:Null}" Header="Username" HeaderStringFormat="Username"/>
+                            <DataGridCheckBoxColumn Binding="{Binding IsAdmin}" x:Name="colTitle" ClipboardContentBinding="{x:Null}" Header="Admin" HeaderStringFormat="Admin" Width="210"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Add" x:Name="colAddUser">
+                <Grid Background="#FFFFFF">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="11*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="lblUsername" Content="Username" HorizontalAlignment="Left" Margin="26,18,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblPassword" Content="Password" HorizontalAlignment="Left" Margin="26,87,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblPasswordConfirm" Content="Password Confirmed" HorizontalAlignment="Left" Margin="26,122,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="23" Margin="22.394,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Text="jacqueline" Grid.Column="1"/>
+                    <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Height="23" Margin="22.333,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Text="P@ssw0rd" Grid.Column="1"/>
+                    <TextBox x:Name="txtPasswordConfirm" HorizontalAlignment="Left" Height="23" Margin="22.333,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Text="P@ssw0rd" Grid.Column="1"/>
+
+                    <Button x:Name="btnAddUser" Content="Add User" HorizontalAlignment="Left" Margin="40.333,202,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="btnAddUser_Click"/>
+                    <RadioButton x:Name="rBtnAdmin" Content="Admin" HorizontalAlignment="Left" Margin="22.333,166,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <RadioButton x:Name="rBtnRegularUser" IsChecked="True" Content="Regular User" HorizontalAlignment="Left" Margin="96.333,166,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label x:Name="lblRole" Content="Role" HorizontalAlignment="Left" Margin="26,159,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblEmail" Content="Username" HorizontalAlignment="Left" Margin="26,52,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="22.333,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Text="Mho9804@conestogac.on.ca" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
 
     </Grid>
 </Window>

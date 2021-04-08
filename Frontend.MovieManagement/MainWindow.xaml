@@ -9,22 +9,37 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Label x:Name="lblHeader" Content="Movie Management System" HorizontalAlignment="Left" Margin="65,24,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="24" Margin="65,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="24" Margin="137,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" IsEnabled="False" TextChanged="txtSearch_TextChanged"/>
         <Button x:Name="btnAddMovie" Content="Add New Movie" HorizontalAlignment="Left" Margin="628,72,0,0" VerticalAlignment="Top" Width="113" IsEnabled="False" Click="btnAddMovie_Click"/>
-        <DataGrid x:Name="dMovies" HorizontalAlignment="Left" Height="254" Margin="65,139,0,0" VerticalAlignment="Top" Width="676" IsEnabled="False"  ItemsSource="{Binding _movieList}" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid x:Name="dMovies" HorizontalAlignment="Left" Height="282" Margin="65,99,0,0" VerticalAlignment="Top" Width="676" IsEnabled="False"  ItemsSource="{Binding _movieList}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding IsOnShow}" ClipboardContentBinding="{x:Null}" Header="On Show" HeaderStringFormat="IsOnShow"/>
-                <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="Id" HeaderStringFormat="Id" Visibility="Hidden"/>
-                <DataGridTextColumn Binding="{Binding Title}" ClipboardContentBinding="{x:Null}" Header="Title" HeaderStringFormat="Title" Width="250"/>
-                <DataGridTextColumn Binding="{Binding Director}" ClipboardContentBinding="{x:Null}" Header="Director" HeaderStringFormat="Director" Width="200"/>
-                <DataGridTextColumn Binding="{Binding Genere}" ClipboardContentBinding="{x:Null}" Header="Genere" HeaderStringFormat="Genere" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Cast}" ClipboardContentBinding="{x:Null}" Header="Cast" HeaderStringFormat="Cast" Visibility="Hidden"/>
-                <DataGridTextColumn Binding="{Binding Year}" ClipboardContentBinding="{x:Null}" Header="Year" HeaderStringFormat="Year" Width="60"/>
-                <DataGridTextColumn Binding="{Binding Award}" ClipboardContentBinding="{x:Null}" Header="Award" HeaderStringFormat="Award" Visibility="Hidden"/>
+                <DataGridCheckBoxColumn IsReadOnly="true" Binding="{Binding IsOnShow}" x:Name="colOnShow" ClipboardContentBinding="{x:Null}" Header="On Show" HeaderStringFormat="IsOnShow"/>
+                <DataGridTextColumn Binding="{Binding Id}" x:Name="colId" ClipboardContentBinding="{x:Null}" Header="Id" HeaderStringFormat="Id" Visibility="Hidden"/>
+                <DataGridTextColumn Binding="{Binding Title}" x:Name="colTitle" ClipboardContentBinding="{x:Null}" Header="Title" HeaderStringFormat="Title" Width="200"/>
+                <DataGridTextColumn Binding="{Binding Director}" x:Name="colDirector" ClipboardContentBinding="{x:Null}" Header="Director" HeaderStringFormat="Director" Width="230"/>
+                <DataGridTextColumn Binding="{Binding Genere}" x:Name="colGenere" ClipboardContentBinding="{x:Null}" Header="Genere" HeaderStringFormat="Genere" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Cast}" x:Name="colCast" ClipboardContentBinding="{x:Null}" Header="Cast" HeaderStringFormat="Cast" Visibility="Hidden"/>
+                <DataGridTextColumn Binding="{Binding Year}" x:Name="colYear" ClipboardContentBinding="{x:Null}" Header="Year" HeaderStringFormat="Year" Width="60"/>
+                <DataGridTextColumn Binding="{Binding Award}" x:Name="colAward" ClipboardContentBinding="{x:Null}" Header="Award" HeaderStringFormat="Award" Visibility="Hidden"/>
+                <DataGridTemplateColumn Width="50" x:Name="colEdit" Visibility="Hidden">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Height="30" Width="50" Content="Edit" Click="btnEditMovie_Click" CommandParameter="{Binding Id}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="50" x:Name="colDelete" Visibility="Hidden">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Height="30" Width="50" Content="Delete" Click="btnRemoveMovie_Click" CommandParameter="{Binding Id}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
-            
-        </DataGrid>
-        <Button x:Name="btnUser" Content="/{Username/}" HorizontalAlignment="Left" Margin="666,29,0,0" VerticalAlignment="Top" Width="75" Click="btnUser_Click" IsEnabled="False"/>
 
+        </DataGrid>
+        <Button x:Name="btnUser" Content="/{Username/}" HorizontalAlignment="Left" Margin="666,29,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False"/>
+        <Label x:Name="lblSearch" Content="Search:" HorizontalAlignment="Left" Margin="65,68,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnSearchAdvance" FontFamily="Segoe MDL2 Assets" Content="&#xE7C5;" HorizontalAlignment="Left" Margin="312,70,0,0" VerticalAlignment="Top" Width="22" Height="23" Click="btnSearchAdvance_Click"/>
     </Grid>
 </Window>

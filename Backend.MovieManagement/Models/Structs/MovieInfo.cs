@@ -35,17 +35,6 @@ namespace PROG8060_Group.Models
             this.Award = award;
         }
 
-        public MovieInfo(int id, string title, string director, string genere, string cast, int year, string award)
-        {
-            this.Id = id;
-            this.Title = title;
-            this.Director = director;
-            this.Genere = genere;
-            this.Cast = cast;
-            this.Year = year;
-            this.Award = award;
-        }
-
         public MovieInfo(int id, string title, string director, string genere, string cast, int year, string award, bool isOnShow)
         {
             this.Id = id;

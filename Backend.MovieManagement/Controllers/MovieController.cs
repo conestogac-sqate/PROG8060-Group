@@ -34,12 +34,12 @@ namespace PROG8060_Group.Controllers
         }
 
         [HttpPut]
-        public ActionResult Update(int movieId, string title, string director, string genre, string cast, int year, string award)
+        public ActionResult Update(int movieId, string title, string director, string genre, string cast, int year, string award, bool is_show)
         {
             SecurityManager.Authorize(Request);
             try
             {
-                bool ret = _movieManager.UpdateMovie(new MovieInfo(movieId, title, director, genre, cast, year, award));
+                bool ret = _movieManager.UpdateMovie(new MovieInfo(movieId, title, director, genre, cast, year, award, is_show));
                 return Json(new ApiSuccess<bool>(ret));
             }
             catch (Exception ex)
@@ -154,6 +154,29 @@ namespace PROG8060_Group.Controllers
             try
             {
                 MovieInfo[] ret = _movieManager.GetMoviesByPrefixAndOnShow(prefix, isOnShow);
+                return new JsonResult()
+                {
+                    Data = new ApiSuccess<MovieInfo[]>(ret),
+                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult()
+                {
+                    Data = new ApiError($"{ex.Message}"),
+                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                };
+            }
+        }
+
+        [HttpGet]
+        public ActionResult GetByAdvanceSearch(string title, string director, string genre, string cast, int year, string award, int isOnShow)
+        {
+            SecurityManager.Authorize(Request);
+            try
+            {
+                MovieInfo[] ret = _movieManager.GetByAdvanceSearch(new SearchConfiguration(title, director, genre, cast, year, award, (SearchConfiguration.OnShow)isOnShow));
                 return new JsonResult()
                 {
                     Data = new ApiSuccess<MovieInfo[]>(ret),

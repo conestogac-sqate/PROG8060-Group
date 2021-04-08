@@ -65,6 +65,7 @@
     <Compile Include="Const.cs" />
     <Compile Include="APIController.cs" />
     <Compile Include="Structs\ApiResult.cs" />
+    <Compile Include="Structs\SearchConfiguration.cs" />
     <Compile Include="Structs\MovieInfo.cs" />
     <Compile Include="Structs\UserInfo.cs" />
     <Compile Include="UserSettingWindow.xaml.cs">
