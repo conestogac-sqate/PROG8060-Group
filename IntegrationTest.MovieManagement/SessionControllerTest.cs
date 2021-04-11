@@ -187,5 +187,29 @@ namespace IntegrationTest.MovieManagement
             sessionDto = JsonConvert.DeserializeObject<ApiError>(response.Content);
             Assert.IsFalse(sessionDto.Success);
         }
+    
+        [Test]
+        public void GetUsersAllTest()
+        {
+            // Prerequisite - Pass
+            var client = new RestClient("https://localhost:44343/Session/AddUser?username=testUser&password=P@ssw0rd&email=abc@abc.com&canCreate=true&canUpdate=true&canRead=true&canDelete=true");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.POST);
+            IRestResponse response = client.Execute(request);
+
+            client = new RestClient("https://localhost:44343/Session/Login?username=testUser&password=P@ssw0rd");
+            client.Timeout = -1;
+            request = new RestRequest(Method.POST);
+            response = client.Execute(request);
+
+            client = new RestClient("https://localhost:44343/Session/GetUsersAll");
+            client.Timeout = -1;
+            request = new RestRequest(Method.GET);
+            response = client.Execute(request);
+            ApiResult sessionDto = JsonConvert.DeserializeObject<ApiSuccess<UserInfo[]>>(response.Content);
+            UserInfo[] userInfo = (UserInfo[])sessionDto.Data;
+            Assert.IsTrue(sessionDto.Success);
+            Assert.IsTrue(userInfo.Length > 0);
+        }
     }
 }

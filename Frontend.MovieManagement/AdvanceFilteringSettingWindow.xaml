@@ -12,7 +12,7 @@
         <Label x:Name="lblHeader" Content="Advance Search" HorizontalAlignment="Left" Margin="205,61,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="rBtnNotPlaying" Content="Not Playing" HorizontalAlignment="Left" Margin="142,308,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="rBtnNowPlaying" Content="Now Playing" HorizontalAlignment="Left" Margin="241,308,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="rBtnClearAll" Content="Clear All" HorizontalAlignment="Left" Margin="347,308,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <RadioButton x:Name="rBtnAll" Content="All" HorizontalAlignment="Left" Margin="347,308,0,0" VerticalAlignment="Top" IsChecked="True"/>
         <Label x:Name="lblStatus" Content="Status" HorizontalAlignment="Left" Margin="67,301,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="218,354,0,0" VerticalAlignment="Top" Width="75" Click="btnSearch_Click"/>
         <Label x:Name="lblSearchRange" Content="Search Range:" HorizontalAlignment="Left" Margin="68,92,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
