@@ -38,7 +38,7 @@ namespace UI.MovieManagement
             filterSettings.Cast = txtCast.Text;
             filterSettings.Year = string.IsNullOrEmpty(txtYear.Text) ? -1 : Convert.ToInt32(txtYear.Text);
             filterSettings.Award = txtAward.Text;
-            filterSettings.IsOnShow = rBtnClearAll.IsChecked ?? true ? SearchConfiguration.OnShow.UNKNOWN : (rBtnNowPlaying.IsChecked ?? true ? SearchConfiguration.OnShow.YES : SearchConfiguration.OnShow.NO);
+            filterSettings.IsOnShow = rBtnAll.IsChecked ?? true ? SearchConfiguration.OnShow.UNKNOWN : (rBtnNowPlaying.IsChecked ?? true ? SearchConfiguration.OnShow.YES : SearchConfiguration.OnShow.NO);
 
             if (OnAdvanceFilterCallback == null) { MessageBox.Show("Unable to do advance search"); return; }
             OnAdvanceFilterCallback(filterSettings);

@@ -63,21 +63,6 @@ namespace PROG8060_Group.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult MarkAsOnShow(string ids)
-        {
-            SecurityManager.Authorize(Request);
-            try
-            {
-                bool ret = _movieManager.MarkAsOnShow(ids);
-                return Json(new ApiSuccess<bool>(ret));
-            }
-            catch (Exception ex)
-            {
-                return Json(new ApiError($"{ex.Message}"));
-            }
-        }
-
         [HttpGet]
         public ActionResult GetByIds(string ids)
         {
@@ -108,52 +93,6 @@ namespace PROG8060_Group.Controllers
             try
             {
                 MovieInfo[] ret = _movieManager.GetMoviesByPrefix(prefix);
-                return new JsonResult()
-                {
-                    Data = new ApiSuccess<MovieInfo[]>(ret),
-                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
-                };
-            }
-            catch (Exception ex)
-            {
-                return new JsonResult()
-                {
-                    Data = new ApiError($"{ex.Message}"),
-                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
-                };
-            }
-        }
-
-        [HttpGet]
-        public ActionResult GetByOnShow(bool isOnShow)
-        {
-            SecurityManager.Authorize(Request);
-            try
-            {
-                MovieInfo[] ret = _movieManager.GetMoviesOnShow(isOnShow);
-                return new JsonResult()
-                {
-                    Data = new ApiSuccess<MovieInfo[]>(ret),
-                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
-                };
-            }
-            catch (Exception ex)
-            {
-                return new JsonResult()
-                {
-                    Data = new ApiError($"{ex.Message}"),
-                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
-                };
-            }
-        }
-
-        [HttpGet]
-        public ActionResult GetByPrefixOnShow(string prefix, bool isOnShow)
-        {
-            SecurityManager.Authorize(Request);
-            try
-            {
-                MovieInfo[] ret = _movieManager.GetMoviesByPrefixAndOnShow(prefix, isOnShow);
                 return new JsonResult()
                 {
                     Data = new ApiSuccess<MovieInfo[]>(ret),

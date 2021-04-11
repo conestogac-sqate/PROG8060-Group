@@ -38,7 +38,7 @@
                     <RadioButton x:Name="rBtnAdmin" Content="Admin" HorizontalAlignment="Left" Margin="22.333,166,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                     <RadioButton x:Name="rBtnRegularUser" IsChecked="True" Content="Regular User" HorizontalAlignment="Left" Margin="96.333,166,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                     <Label x:Name="lblRole" Content="Role" HorizontalAlignment="Left" Margin="26,159,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lblEmail" Content="Username" HorizontalAlignment="Left" Margin="26,52,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblEmail" Content="Email" HorizontalAlignment="Left" Margin="26,52,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="22.333,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Text="Mho9804@conestogac.on.ca" Grid.Column="1"/>
                 </Grid>
             </TabItem>

@@ -371,18 +371,18 @@ namespace PROG8060_Group.Models
                     }
                 }
 
-                if (dataSet == null || dataSet.Tables.Count != 1) { throw new Exception("Dataset table fails"); }
-                DataTable dataTable = dataSet.Tables[0];
-                if (dataTable.Rows.Count != 1) { throw new Exception("Data table row is not 1"); }
-                UserInfo userInfo = (from rw in dataTable.AsEnumerable()
-                                     select new UserInfo(Convert.ToString(rw["user_id"]),
-                                                         Convert.ToString(rw["email"]),
-                                                         Convert.ToBoolean(rw["enable_create"]),
-                                                         Convert.ToBoolean(rw["enable_update"]),
-                                                         Convert.ToBoolean(rw["enable_read"]),
-                                                         Convert.ToBoolean(rw["enable_delete"]))
-                                     { }).First();
-                if (userInfo == null) throw new Exception();
+                UserInfo userInfo = null;
+                if(dataSet.Tables.Count == 1)
+                {
+                    userInfo = (from rw in dataSet.Tables[0].AsEnumerable()
+                                select new UserInfo(Convert.ToString(rw["user_id"]),
+                                                    Convert.ToString(rw["email"]),
+                                                    Convert.ToBoolean(rw["enable_create"]),
+                                                    Convert.ToBoolean(rw["enable_update"]),
+                                                    Convert.ToBoolean(rw["enable_read"]),
+                                                    Convert.ToBoolean(rw["enable_delete"]))
+                                { }).First();
+                }
                 return userInfo;
             }
             catch (Exception ex)
@@ -410,25 +410,24 @@ namespace PROG8060_Group.Models
                     }
                 }
 
-                if (dataSet == null || dataSet.Tables.Count != 1) { throw new Exception("Dataset table fails"); }
-                DataTable dataTable = dataSet.Tables[0];
-
-                UserInfo[] userInfos = (from rw in dataTable.AsEnumerable()
-                                          select new UserInfo(Convert.ToString(rw["user_id"]),
-                                                               Convert.ToString(rw["email"]),
-                                                               Convert.ToBoolean(rw["enable_create"]),
-                                                               Convert.ToBoolean(rw["enable_update"]),
-                                                               Convert.ToBoolean(rw["enable_read"]),
-                                                               Convert.ToBoolean(rw["enable_delete"]),
-                                                               Convert.ToBoolean(rw["enable_create"])&& Convert.ToBoolean(rw["enable_update"])&& Convert.ToBoolean(rw["enable_read"])&& Convert.ToBoolean(rw["enable_delete"]))
-                                          { }).ToArray();
-                if (userInfos == null || userInfos.Length == 0) throw new Exception();
-
+                UserInfo[] userInfos = null;
+                if (dataSet.Tables.Count == 1)
+                {
+                    userInfos = (from rw in dataSet.Tables[0].AsEnumerable()
+                                 select new UserInfo(Convert.ToString(rw["user_id"]),
+                                                      Convert.ToString(rw["email"]),
+                                                      Convert.ToBoolean(rw["enable_create"]),
+                                                      Convert.ToBoolean(rw["enable_update"]),
+                                                      Convert.ToBoolean(rw["enable_read"]),
+                                                      Convert.ToBoolean(rw["enable_delete"]),
+                                                      Convert.ToBoolean(rw["enable_create"]) && Convert.ToBoolean(rw["enable_update"]) && Convert.ToBoolean(rw["enable_read"]) && Convert.ToBoolean(rw["enable_delete"]))
+                                 { }).ToArray();
+                }
                 return userInfos;
             }
             catch (Exception ex)
             {
-                throw new Exception($"Unable to get movie (all). {ex.Message}");
+                throw new Exception($"Unable to get movie (all).");
             }
         }
     }

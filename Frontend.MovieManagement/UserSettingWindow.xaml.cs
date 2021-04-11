@@ -58,7 +58,7 @@ namespace UI.MovieManagement
             ApiResult ret = APIController.RequestAddUser(userInfo);
 
             if (!ret.Success) { MessageBox.Show("Unable to Submit new user Infomation"); return; }
-            MessageBox.Show("Movie Submit Success!");
+            MessageBox.Show("New User Added");
             LoadUsers();
         }
 

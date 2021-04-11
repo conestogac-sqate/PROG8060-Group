@@ -39,6 +39,7 @@ namespace UnitTest.MovieManagement
                     paramMock.Setup(m => m.Value).Returns((int)scenario % 2);
                     break;
                 case TestScenario.FAIL_OBJECT_RETURN:
+                    break;
                 case TestScenario.PASS_OBJECT_RETURN:
                     var adapterMock = new Mock<IDataAdapter>();
                     var dataSetMock = new Mock<DataSet>();
@@ -135,16 +136,31 @@ namespace UnitTest.MovieManagement
         [Test]
         public void GetUserTest()
         {
-            // Pass
-            //var sessionManager = GetSessionManager(TestScenario.PASS_OBJECT_RETURN);
-            //UserInfo ret = sessionManager.GetUser("name");
-            //Assert.IsNull(ret);
+            var sessionManager = GetSessionManager(TestScenario.PASS_OBJECT_RETURN);
+            UserInfo ret = sessionManager.GetUser("name");
+            Assert.IsNull(ret);
 
-            //// Fail
-            var sessionManager = GetSessionManager(TestScenario.FAIL_OBJECT_RETURN);
+            // Fail
+            sessionManager = GetSessionManager(TestScenario.FAIL_OBJECT_RETURN);
             Assert.That(() => sessionManager.GetUser("name"),
                               Throws.TypeOf<Exception>()
-                                    .With.Message.EqualTo("Unable to get user name. Dataset table fails"));
+                                    .With.Message.EqualTo("Unable to get user name. Object reference not set to an instance of an object."));
+
+        }
+
+        [Test]
+        public void GetUsersAllTest()
+        {
+            // Pass
+            var sessionManager = GetSessionManager(TestScenario.PASS_OBJECT_RETURN);
+            UserInfo ret = sessionManager.GetUser("name");
+            Assert.IsNull(ret);
+
+            // Fail
+            sessionManager = GetSessionManager(TestScenario.FAIL_OBJECT_RETURN);
+            Assert.That(() => sessionManager.GetUsersAll(),
+                              Throws.TypeOf<Exception>()
+                                    .With.Message.EqualTo("Unable to get movie (all)."));
 
         }
     }

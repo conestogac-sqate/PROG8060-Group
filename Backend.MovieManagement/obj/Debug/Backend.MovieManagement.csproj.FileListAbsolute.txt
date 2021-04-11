@@ -377,4 +377,3 @@ C:\Users\Administrator\Desktop\prog8060\PROG8060-Group\Backend.MovieManagement\o
 C:\Users\Administrator\Desktop\prog8060\PROG8060-Group\Backend.MovieManagement\obj\Debug\Backend.MovieManagement.csproj.CopyComplete
 C:\Users\Administrator\Desktop\prog8060\PROG8060-Group\Backend.MovieManagement\obj\Debug\PROG8060-Group.dll
 C:\Users\Administrator\Desktop\prog8060\PROG8060-Group\Backend.MovieManagement\obj\Debug\PROG8060-Group.pdb
-C:\Users\Administrator\Desktop\prog8060\PROG8060-Group\Backend.MovieManagement\obj\Debug\Backend.MovieManagement.csprojAssemblyReference.cache
