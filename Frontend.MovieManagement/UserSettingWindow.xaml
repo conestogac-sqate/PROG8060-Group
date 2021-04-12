@@ -30,16 +30,15 @@
                     <Label x:Name="lblUsername" Content="Username" HorizontalAlignment="Left" Margin="26,18,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="lblPassword" Content="Password" HorizontalAlignment="Left" Margin="26,87,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="lblPasswordConfirm" Content="Password Confirmed" HorizontalAlignment="Left" Margin="26,122,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="23" Margin="22.394,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Text="jacqueline" Grid.Column="1"/>
-                    <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Height="23" Margin="22.333,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Text="P@ssw0rd" Grid.Column="1"/>
-                    <TextBox x:Name="txtPasswordConfirm" HorizontalAlignment="Left" Height="23" Margin="22.333,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Text="P@ssw0rd" Grid.Column="1"/>
-
+                    <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="23" Margin="22.394,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Text="" Grid.Column="1"/>
+                    <PasswordBox x:Name="txtPassword" Grid.Column="1" HorizontalAlignment="Left" Margin="22.333,91,0,0" VerticalAlignment="Top" Width="245" Height="23"/>
+                    <PasswordBox x:Name="txtPasswordConfirm" Grid.Column="1" HorizontalAlignment="Left" Margin="22.333,125,0,0" VerticalAlignment="Top" Width="245" Height="23"/>
                     <Button x:Name="btnAddUser" Content="Add User" HorizontalAlignment="Left" Margin="40.333,202,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="btnAddUser_Click"/>
                     <RadioButton x:Name="rBtnAdmin" Content="Admin" HorizontalAlignment="Left" Margin="22.333,166,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                     <RadioButton x:Name="rBtnRegularUser" IsChecked="True" Content="Regular User" HorizontalAlignment="Left" Margin="96.333,166,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                     <Label x:Name="lblRole" Content="Role" HorizontalAlignment="Left" Margin="26,159,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="lblEmail" Content="Email" HorizontalAlignment="Left" Margin="26,52,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="22.333,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Text="Mho9804@conestogac.on.ca" Grid.Column="1"/>
+                    <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="22.333,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Text="" Grid.Column="1"/>
                 </Grid>
             </TabItem>
         </TabControl>

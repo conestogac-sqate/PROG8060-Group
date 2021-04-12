@@ -73,6 +73,47 @@ namespace UIAutomationTest.MovieManagement
         }
 
         [Test]
+        public void AddMovieTest()
+        {
+            string username = "jacqueline"; string password = "P@ssw0rd";
+            WindowsDriver<WindowsElement> session = Initialize();
+            session = WorkflowLogin(session, username, password);
+            Assert.AreEqual(session.WindowHandles.Count, 1);
+
+            // Main Page
+            session.SwitchTo().Window(session.WindowHandles.Last());
+            Assert.IsTrue(session.FindElementsByClassName("DataGridRow").Count > 0);
+
+            WindowsElement eAddUser = session.FindElementByAccessibilityId("btnAddMovie");
+            eAddUser.Click();
+            session.SwitchTo().Window(session.WindowHandles[0]);
+
+            WindowsElement eTitle = session.FindElementByAccessibilityId("txtTitle");
+            eTitle.SendKeys($"title{DateTime.Now.ToString()}");
+
+            WindowsElement eDirector = session.FindElementByAccessibilityId("txtDirector");
+            eDirector.SendKeys("Director");
+
+            WindowsElement eGenre = session.FindElementByAccessibilityId("txtGenre");
+            eGenre.SendKeys("Genre");
+
+            WindowsElement eCast = session.FindElementByAccessibilityId("txtCast");
+            eCast.SendKeys("Cast");
+
+            WindowsElement eYear = session.FindElementByAccessibilityId("txtYear");
+            eYear.SendKeys("2021");
+
+            WindowsElement eAward = session.FindElementByAccessibilityId("txtAwards");
+            eAward.SendKeys("Award");
+
+            WindowsElement ePlay = session.FindElementByAccessibilityId("rBtnNowPlaying");
+            ePlay.Click();
+
+            WindowsElement eSubmit = session.FindElementByAccessibilityId("btnSubmit");
+            eSubmit.Click();
+        }
+
+        [Test]
         public void EditMovieTest()
         {
             string username = "jacqueline"; string password = "P@ssw0rd";
@@ -112,9 +153,138 @@ namespace UIAutomationTest.MovieManagement
             AppiumWebElement eDeleteButton = eDeleteRow.FindElementByName("Delete");
             eDeleteButton.Click();
 
-            string page = session.PageSource;
-            WindowsElement eSubmitMessage = session.FindElementByName("Movie Submit Success!");
-            Assert.AreEqual(eSubmitMessage.Text, "Movie Submit Success!");
+            session.SwitchTo().Window(session.WindowHandles[0]);
+            WindowsElement eYes = session.FindElementByName("Yes");
+            eYes.Click();
+        }
+
+        [Test]
+        public void SearchMovieTest()
+        {
+            string username = "jacqueline"; string password = "P@ssw0rd";
+            WindowsDriver<WindowsElement> session = Initialize();
+            session = WorkflowLogin(session, username, password);
+            Assert.AreEqual(session.WindowHandles.Count, 1);
+
+            // Main Page
+            session.SwitchTo().Window(session.WindowHandles.Last());
+            Assert.IsTrue(session.FindElementsByClassName("DataGridRow").Count > 0);
+
+            WindowsElement eSearch = session.FindElementByAccessibilityId("txtSearch");
+            eSearch.SendKeys("The");
+
+            Assert.IsTrue(session.FindElementsByClassName("DataGridRow").Count > 0);
+        }
+
+        [Test]
+        public void SearchAdvanceMovieTest()
+        {
+            string username = "jacqueline"; string password = "P@ssw0rd";
+            WindowsDriver<WindowsElement> session = Initialize();
+            session = WorkflowLogin(session, username, password);
+            Assert.AreEqual(session.WindowHandles.Count, 1);
+
+            // Main Page
+            session.SwitchTo().Window(session.WindowHandles.Last());
+            Assert.IsTrue(session.FindElementsByClassName("DataGridRow").Count > 0);
+
+            WindowsElement eSearch = session.FindElementByAccessibilityId("btnSearchAdvance");
+            eSearch.Click();
+
+            session.SwitchTo().Window(session.WindowHandles[0]);
+            WindowsElement eYear = session.FindElementByAccessibilityId("txtYear");
+            eYear.SendKeys("2021");
+
+            WindowsElement eSearchSubmit = session.FindElementByAccessibilityId("btnSearch");
+            eSearchSubmit.Click();
+            session.SwitchTo().Window(session.WindowHandles[0]);
+
+            Assert.IsTrue(session.FindElementsByClassName("DataGridRow").Count > 0);
+        }
+
+        [Test]
+        public void ViewUserTest()
+        {
+            string username = "jacqueline"; string password = "P@ssw0rd";
+            WindowsDriver<WindowsElement> session = Initialize();
+            session = WorkflowLogin(session, username, password);
+            Assert.AreEqual(session.WindowHandles.Count, 1);
+
+            // Main Page
+            session.SwitchTo().Window(session.WindowHandles.Last());
+            Assert.IsTrue(session.FindElementsByClassName("DataGridRow").Count > 0);
+
+            WindowsElement eUser = session.FindElementByAccessibilityId("btnUser");
+            eUser.Click();
+
+            session.SwitchTo().Window(session.WindowHandles[0]);
+            Assert.IsTrue(session.FindElementsByClassName("DataGridRow").Count > 0);
+        }
+
+        [Test]
+        public void AddUserTest()
+        {
+            string username = "jacqueline"; string password = "P@ssw0rd";
+            WindowsDriver<WindowsElement> session = Initialize();
+            session = WorkflowLogin(session, username, password);
+            Assert.AreEqual(session.WindowHandles.Count, 1);
+
+            // Main Page
+            session.SwitchTo().Window(session.WindowHandles.Last());
+            Assert.IsTrue(session.FindElementsByClassName("DataGridRow").Count > 0);
+
+            WindowsElement eUser = session.FindElementByAccessibilityId("btnUser");
+            eUser.Click();
+
+            session.SwitchTo().Window(session.WindowHandles[0]);
+            WindowsElement eAddUser = session.FindElementByAccessibilityId("colAddUser");
+            eAddUser.Click();
+
+            WindowsElement eNewUser = session.FindElementByAccessibilityId("txtUsername");
+            eNewUser.SendKeys($"newUser{DateTime.Now.ToString()}");
+
+            WindowsElement eEmail = session.FindElementByAccessibilityId("txtEmail");
+            eEmail.SendKeys("abc@abc.com");
+
+            WindowsElement ePassword = session.FindElementByAccessibilityId("txtPassword");
+            ePassword.SendKeys("P@ssw0rd");
+
+            WindowsElement ePassword2 = session.FindElementByAccessibilityId("txtPasswordConfirm");
+            ePassword2.SendKeys("P@ssw0rd");
+
+            WindowsElement eRole = session.FindElementByAccessibilityId("rBtnAdmin");
+            eRole.Click();
+
+            WindowsElement eAddSubmit = session.FindElementByAccessibilityId("btnAddUser");
+            eAddSubmit.Click();
+        }
+
+        [Test]
+        public void EditUserTest()
+        {
+            string username = "jacqueline"; string password = "P@ssw0rd";
+            WindowsDriver<WindowsElement> session = Initialize();
+            session = WorkflowLogin(session, username, password);
+            Assert.AreEqual(session.WindowHandles.Count, 1);
+
+            // Main Page
+            session.SwitchTo().Window(session.WindowHandles.Last());
+            Assert.IsTrue(session.FindElementsByClassName("DataGridRow").Count > 0);
+
+            WindowsElement eUser = session.FindElementByAccessibilityId("btnUser");
+            eUser.Click();
+
+            session.SwitchTo().Window(session.WindowHandles[0]);
+            Assert.IsTrue(session.FindElementsByClassName("DataGridRow").Count > 0);
+
+            WindowsElement eRow = session.FindElementsByClassName("DataGridRow").ElementAt(9);
+            AppiumWebElement eCheckbox = eRow.FindElementByClassName("CheckBox");
+            eCheckbox.Click();
+
+            session.SwitchTo().Window(session.WindowHandles[0]);
+            WindowsElement eYes = session.FindElementByName("Yes");
+            eYes.Click();
+            Assert.IsTrue(session.FindElementsByClassName("DataGridRow").Count > 0);
         }
     }
 }

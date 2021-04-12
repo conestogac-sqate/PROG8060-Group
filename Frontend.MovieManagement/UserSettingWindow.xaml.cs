@@ -54,7 +54,7 @@ namespace UI.MovieManagement
             bool canCreate = false; bool canUpdate = false; bool canRead = true; bool canDelete = false;
             if (rBtnAdmin.IsChecked ?? false) { canCreate = canUpdate = canRead = canDelete = true; }
 
-            UserInfo userInfo = new UserInfo(txtUsername.Text, txtPassword.Text, txtEmail.Text, canCreate, canUpdate, canRead, canDelete);
+            UserInfo userInfo = new UserInfo(txtUsername.Text, txtPassword.Password, txtEmail.Text, canCreate, canUpdate, canRead, canDelete);
             ApiResult ret = APIController.RequestAddUser(userInfo);
 
             if (!ret.Success) { MessageBox.Show("Unable to Submit new user Infomation"); return; }

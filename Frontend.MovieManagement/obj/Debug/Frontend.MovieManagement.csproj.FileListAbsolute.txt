@@ -52,4 +52,3 @@ C:\Users\Administrator\Desktop\prog8060\PROG8060-Group\Frontend.MovieManagement\
 C:\Users\Administrator\Desktop\prog8060\PROG8060-Group\Frontend.MovieManagement\obj\Debug\Frontend.MovieManagement.csproj.CopyComplete
 C:\Users\Administrator\Desktop\prog8060\PROG8060-Group\Frontend.MovieManagement\obj\Debug\UI.MovieManagement.exe
 C:\Users\Administrator\Desktop\prog8060\PROG8060-Group\Frontend.MovieManagement\obj\Debug\UI.MovieManagement.pdb
-C:\Users\Administrator\Desktop\prog8060\PROG8060-Group\Frontend.MovieManagement\obj\Debug\Frontend.MovieManagement.csprojAssemblyReference.cache

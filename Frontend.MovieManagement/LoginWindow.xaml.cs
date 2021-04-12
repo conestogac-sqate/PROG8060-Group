@@ -38,7 +38,7 @@ namespace UI.MovieManagement
             this.IsEnabled = false;
 
             string username = txtUsername.Text;
-            string password = txtPassword.Text;
+            string password = txtPassword.Password;
 
             ApiResult ret = APIController.RequestLogin(username, password);
             if(!ret.Success)
