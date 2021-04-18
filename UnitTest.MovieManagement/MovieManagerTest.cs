@@ -40,6 +40,7 @@ namespace UnitTest.MovieManagement
                     paramMock.Setup(m => m.Value).Returns((int)scenario % 2);
                     break;
                 case TestScenario.FAIL_OBJECT_RETURN:
+                    break;
                 case TestScenario.PASS_OBJECT_RETURN:
                     var adapterMock = new Mock<IDataAdapter>();
                     var dataSetMock = new Mock<DataSet>();
@@ -99,93 +100,63 @@ namespace UnitTest.MovieManagement
         }
 
         [Test]
-        public void MaskAsOnShowTest()
-        {
-            // Pass
-            var movieManager = GetMovieManager(TestScenario.PASS_BOOL_RETURN);
-            bool ret = movieManager.MarkAsOnShow("1,2,3");
-            Assert.IsTrue(ret);
-
-            // Fail
-            movieManager = GetMovieManager(TestScenario.FAIL_BOOL_RETURN);
-            Assert.That(() => movieManager.MarkAsOnShow("1,2,3"),
-            Throws.TypeOf<Exception>()
-                                    .With.Message.EqualTo("Unable to mark as on show. Exception of type 'System.Exception' was thrown."));
-        }
-
-        [Test]
         public void GetMoviesByIdsTest()
         {
-            //// Pass
-            //var movieManager = GetMovieManager(TestScenario.PASS_OBJECT_RETURN);
-            //MovieInfo[] movieInfos = movieManager.GetMoviesByIds("1,2,3");
-            //Assert.AreEqual(movieInfos.Length, 1);
+            // Pass
+            var movieManager = GetMovieManager(TestScenario.PASS_OBJECT_RETURN);
+            MovieInfo[] movieInfos = movieManager.GetMoviesByIds("1,2,3");
+            Assert.IsNull(movieInfos);
 
             // Fail
-            var movieManager = GetMovieManager(TestScenario.FAIL_OBJECT_RETURN);
+            movieManager = GetMovieManager(TestScenario.FAIL_OBJECT_RETURN);
             Assert.That(() => movieManager.GetMoviesByIds("1,2,3"),
             Throws.TypeOf<Exception>()
-                                    .With.Message.EqualTo("Unable to get movie detail by ids, ids: 1,2,3. Dataset table fails"));
+                                    .With.Message.EqualTo("Unable to get movie detail by ids, ids: 1,2,3."));
         }
 
         [Test]
         public void GetMoviesByPrefixTest()
         {
-            //// Pass
-            //var movieManager = GetMovieManager(TestScenario.PASS_OBJECT_RETURN);
-            //MovieInfo[] movieInfos = movieManager.GetMoviesByPrefix("prefix");
-            //Assert.AreEqual(movieInfos.Length, 1);
+            // Pass
+            var movieManager = GetMovieManager(TestScenario.PASS_OBJECT_RETURN);
+            MovieInfo[] movieInfos = movieManager.GetMoviesByPrefix("prefix");
+            Assert.IsNull(movieInfos);
 
             // Fail
-            var movieManager = GetMovieManager(TestScenario.FAIL_OBJECT_RETURN);
+            movieManager = GetMovieManager(TestScenario.FAIL_OBJECT_RETURN);
             Assert.That(() => movieManager.GetMoviesByPrefix("preifx"),
             Throws.TypeOf<Exception>()
-                                    .With.Message.EqualTo("Unable to get movie detail by prefix, prefix: preifx. Dataset table fails"));
+                                    .With.Message.EqualTo("Unable to get movie detail by prefix, prefix: preifx."));
         }
 
         [Test]
-        public void GetMoviesOnShowTest()
+        public void GetByAdvanceSearchTest()
         {
-            //// Pass
-            //var movieManager = GetMovieManager(TestScenario.PASS_OBJECT_RETURN);
-            //MovieInfo[] movieInfos = movieManager.GetMoviesOnShow(true);
-            //Assert.AreEqual(movieInfos.Length, 1);
+            // Pass
+            var movieManager = GetMovieManager(TestScenario.PASS_OBJECT_RETURN);
+            MovieInfo[] movieInfos = movieManager.GetByAdvanceSearch(new SearchConfiguration());
+            Assert.IsNull(movieInfos);
 
             // Fail
-            var movieManager = GetMovieManager(TestScenario.FAIL_OBJECT_RETURN);
-            Assert.That(() => movieManager.GetMoviesOnShow(true),
+            movieManager = GetMovieManager(TestScenario.FAIL_OBJECT_RETURN);
+            Assert.That(() => movieManager.GetByAdvanceSearch(new SearchConfiguration()),
             Throws.TypeOf<Exception>()
-                        .With.Message.EqualTo("Unable to get movie detail, is on show: True. Dataset table fails"));
+                        .With.Message.EqualTo("Unable to get movie detail by search configuration."));
         }
 
         [Test]
-        public void GetMoviesByPrefixAndOnShowTest()
+        public void GetMoviesAllTest()
         {
-            //// Pass
-            //var movieManager = GetMovieManager(TestScenario.PASS_OBJECT_RETURN);
-            //MovieInfo[] movieInfos = movieManager.GetMoviesByPrefixAndOnShow("1,2,3", true);
-            //Assert.AreEqual(movieInfos.Length, 1);
+            // Pass
+            var movieManager = GetMovieManager(TestScenario.PASS_OBJECT_RETURN);
+            MovieInfo[] movieInfos = movieManager.GetMoviesAll();
+            Assert.IsNull(movieInfos);
 
             // Fail
-            var movieManager = GetMovieManager(TestScenario.FAIL_OBJECT_RETURN);
-            Assert.That(() => movieManager.GetMoviesByPrefixAndOnShow("1,2,3", true),
-            Throws.TypeOf<Exception>()
-                        .With.Message.EqualTo("Unable to get movie detail by prefix, prefix: 1,2,3, is on show: True. Dataset table fails"));
-        }
-
-        [Test]
-        public void GetMoviesAll()
-        {
-            //// Pass
-            //var movieManager = GetMovieManager(TestScenario.PASS_OBJECT_RETURN);
-            //MovieInfo[] movieInfos = movieManager.GetMoviesAll();
-            //Assert.AreEqual(movieInfos.Length, 1);
-
-            // Fail
-            var movieManager = GetMovieManager(TestScenario.FAIL_OBJECT_RETURN);
+            movieManager = GetMovieManager(TestScenario.FAIL_OBJECT_RETURN);
             Assert.That(() => movieManager.GetMoviesAll(),
             Throws.TypeOf<Exception>()
-                        .With.Message.EqualTo("Unable to get movie (all). Dataset table fails"));
+                        .With.Message.EqualTo("Unable to get movie (all)."));
 
         }
     }

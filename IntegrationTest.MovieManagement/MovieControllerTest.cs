@@ -1,13 +1,19 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using PROG8060_Group.Models;
 using RestSharp;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace IntegrationTest.MovieManagement
 {
     [TestFixture]
     public class MovieControllerTest
     {
+        private readonly string _token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImphY3F1ZWxpbmUiLCJuYmYiOjE2MTg3NzI0NTQsImV4cCI6MTYxOTM3NzI1NCwiaWF0IjoxNjE4NzcyNDU0fQ.4fjXSpCWLjz5NoPsHa-rLCXq1yzACgqZK69UlJrQkb0";
+
         [Test]
         public void AddMovieTest()
         {
@@ -15,14 +21,16 @@ namespace IntegrationTest.MovieManagement
             var client = new RestClient("https://localhost:44343/Movie/Add?title=title1&director=director1&genre=genre&cast=cast1&year=2021&award=award1");
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             IRestResponse response = client.Execute(request);
             ApiResult movieDto = JsonConvert.DeserializeObject<ApiSuccess<int>>(response.Content);
             Assert.IsTrue(movieDto.Success);
             movieId = (int)movieDto.Data;
 
-            client = new RestClient("https://localhost:44343/Movie/Add?title=titleAdd&director=directorAdd&genre=genreAdd&cast=castAdd&year=2021&award=awardAdd");
+            client = new RestClient("https://localhost:44343/Movie/Add?title=title1&director=director1&genre=genre&cast=cast1&year=2021&award=award1");
             client.Timeout = -1;
             request = new RestRequest(Method.POST);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             response = client.Execute(request);
             movieDto = JsonConvert.DeserializeObject<ApiError>(response.Content);
             Assert.IsFalse(movieDto.Success);
@@ -31,6 +39,7 @@ namespace IntegrationTest.MovieManagement
             client = new RestClient($"https://localhost:44343/Movie/Delete?ids={movieId}");
             client.Timeout = -1;
             request = new RestRequest(Method.DELETE);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             response = client.Execute(request);
             movieDto = JsonConvert.DeserializeObject<ApiSuccess<bool>>(response.Content);
             Assert.IsTrue(movieDto.Success);
@@ -41,34 +50,31 @@ namespace IntegrationTest.MovieManagement
         {
             // Prerequisite - Pass
             int movieId = -1;
-            var client = new RestClient("https://localhost:44343/Movie/Add?title=titleAdd&director=directorAdd&genre=genreAdd&cast=castAdd&year=2021&award=awardAdd");
+            var client = new RestClient("https://localhost:44343/Movie/Add?title=title1&director=director1&genre=genre&cast=cast1&year=2021&award=award1");
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             IRestResponse response = client.Execute(request);
             ApiResult movieDto = JsonConvert.DeserializeObject<ApiSuccess<int>>(response.Content);
+            Assert.IsTrue(movieDto.Success);
             movieId = (int)movieDto.Data;
 
-            client = new RestClient($"https://localhost:44343/Movie/Update?movieId={movieId}&title=titleUpdate&director=directorUpdate&genre=genreUpdate&cast=castUpdate&year=2020&award=awardUpdate");
+            client = new RestClient($"https://localhost:44343/Movie/Update?movieId={movieId}&title=The Party&director=Test Director&genre=Test Genre&cast=Test Cast&year=2022&award=Test Award&is_show=true");
             client.Timeout = -1;
             request = new RestRequest(Method.PUT);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             response = client.Execute(request);
             movieDto = JsonConvert.DeserializeObject<ApiSuccess<bool>>(response.Content);
             Assert.IsTrue(movieDto.Success);
 
-            // Prerequisite - Fail
+            // Clean Up
             client = new RestClient($"https://localhost:44343/Movie/Delete?ids={movieId}");
             client.Timeout = -1;
             request = new RestRequest(Method.DELETE);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             response = client.Execute(request);
             movieDto = JsonConvert.DeserializeObject<ApiSuccess<bool>>(response.Content);
             Assert.IsTrue(movieDto.Success);
-
-            client = new RestClient($"https://localhost:44343/Movie/Update?movieId={movieId}&title=titleUpdate&director=directorUpdate&genre=genreUpdate&cast=castUpdate&year=2020&award=awardUpdate");
-            client.Timeout = -1;
-            request = new RestRequest(Method.PUT);
-            response = client.Execute(request);
-            movieDto = JsonConvert.DeserializeObject<ApiError>(response.Content);
-            Assert.IsFalse(movieDto.Success);
         }
 
         [Test]
@@ -76,50 +82,27 @@ namespace IntegrationTest.MovieManagement
         {
             // Prerequisite - Pass
             int movieId = -1;
-            var client = new RestClient("https://localhost:44343/Movie/Add?title=titleAdd&director=directorAdd&genre=genreAdd&cast=castAdd&year=2021&award=awardAdd");
-            client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
-            IRestResponse response = client.Execute(request);
-            ApiResult movieDto = JsonConvert.DeserializeObject<ApiSuccess<int>>(response.Content);
-            movieId = (int)movieDto.Data;
-
-            client = new RestClient($"https://localhost:44343/Movie/Delete?ids={movieId}");
-            client.Timeout = -1;
-            request = new RestRequest(Method.DELETE);
-            response = client.Execute(request);
-            movieDto = JsonConvert.DeserializeObject<ApiSuccess<bool>>(response.Content);
-            Assert.IsTrue(movieDto.Success);
-
-            client = new RestClient($"https://localhost:44343/Movie/Delete?ids={movieId}");
-            client.Timeout = -1;
-            request = new RestRequest(Method.DELETE);
-            response = client.Execute(request);
-            movieDto = JsonConvert.DeserializeObject<ApiError>(response.Content);
-            Assert.IsFalse(movieDto.Success);
-        }
-
-        [Test]
-        public void MarkAsOnShowTest()
-        {
-            // Prerequisite - Pass
-            int movieId = -1;
             var client = new RestClient("https://localhost:44343/Movie/Add?title=title1&director=director1&genre=genre&cast=cast1&year=2021&award=award1");
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             IRestResponse response = client.Execute(request);
             ApiResult movieDto = JsonConvert.DeserializeObject<ApiSuccess<int>>(response.Content);
+            Assert.IsTrue(movieDto.Success);
             movieId = (int)movieDto.Data;
 
-            client = new RestClient($"https://localhost:44343/Movie/MarkAsOnShow?ids={movieId}");
+            client = new RestClient($"https://localhost:44343/Movie/Delete?ids={movieId}");
             client.Timeout = -1;
-            request = new RestRequest(Method.POST);
+            request = new RestRequest(Method.DELETE);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             response = client.Execute(request);
             movieDto = JsonConvert.DeserializeObject<ApiSuccess<bool>>(response.Content);
             Assert.IsTrue(movieDto.Success);
 
-            client = new RestClient($"https://localhost:44343/Movie/MarkAsOnShow?ids={movieId}");
+            client = new RestClient($"https://localhost:44343/Movie/Delete?ids=999999999");
             client.Timeout = -1;
-            request = new RestRequest(Method.POST);
+            request = new RestRequest(Method.DELETE);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             response = client.Execute(request);
             movieDto = JsonConvert.DeserializeObject<ApiError>(response.Content);
             Assert.IsFalse(movieDto.Success);
@@ -133,6 +116,7 @@ namespace IntegrationTest.MovieManagement
             var client = new RestClient("https://localhost:44343/Movie/Add?title=title1&director=director1&genre=genre&cast=cast1&year=2021&award=award1");
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             IRestResponse response = client.Execute(request);
             ApiResult movieDto = JsonConvert.DeserializeObject<ApiSuccess<int>>(response.Content);
             movieId = (int)movieDto.Data;
@@ -140,6 +124,7 @@ namespace IntegrationTest.MovieManagement
             client = new RestClient($"https://localhost:44343/Movie/GetByIds?ids={movieId}");
             client.Timeout = -1;
             request = new RestRequest(Method.GET);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             response = client.Execute(request);
             movieDto = JsonConvert.DeserializeObject<ApiSuccess<MovieInfo[]>>(response.Content);
             MovieInfo[] movieInfos = (MovieInfo[])movieDto.Data;
@@ -147,10 +132,10 @@ namespace IntegrationTest.MovieManagement
             Assert.AreEqual(movieInfos.Length, 1);
             Assert.AreEqual(movieInfos[0].Title, "title1");
 
-            // Prerequisite - Fail
             client = new RestClient($"https://localhost:44343/Movie/Delete?ids={movieId}");
             client.Timeout = -1;
             request = new RestRequest(Method.DELETE);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             response = client.Execute(request);
             movieDto = JsonConvert.DeserializeObject<ApiSuccess<bool>>(response.Content);
             Assert.IsTrue(movieDto.Success);
@@ -158,9 +143,11 @@ namespace IntegrationTest.MovieManagement
             client = new RestClient($"https://localhost:44343/Movie/GetByIds?ids={movieId}");
             client.Timeout = -1;
             request = new RestRequest(Method.GET);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             response = client.Execute(request);
             movieDto = JsonConvert.DeserializeObject<ApiError>(response.Content);
-            Assert.IsFalse(movieDto.Success);
+            Assert.IsTrue(movieDto.Success);
+            Assert.AreEqual(((JArray)movieDto.Data).Count, 0);
         }
 
         [Test]
@@ -171,6 +158,7 @@ namespace IntegrationTest.MovieManagement
             var client = new RestClient("https://localhost:44343/Movie/Add?title=title1&director=director1&genre=genre&cast=cast1&year=2021&award=award1");
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             IRestResponse response = client.Execute(request);
             ApiResult movieDto = JsonConvert.DeserializeObject<ApiSuccess<int>>(response.Content);
             movieId = (int)movieDto.Data;
@@ -178,113 +166,75 @@ namespace IntegrationTest.MovieManagement
             client = new RestClient($"https://localhost:44343/Movie/GetByPrefix?prefix=title");
             client.Timeout = -1;
             request = new RestRequest(Method.GET);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             response = client.Execute(request);
             movieDto = JsonConvert.DeserializeObject<ApiSuccess<MovieInfo[]>>(response.Content);
             MovieInfo[] movieInfos = (MovieInfo[])movieDto.Data;
             Assert.IsTrue(movieDto.Success);
-            Assert.AreEqual(movieInfos[0].Title, "title1");
+            Assert.IsTrue(movieInfos.Length > 0);
+
+            client = new RestClient($"https://localhost:44343/Movie/Delete?ids={movieId}");
+            client.Timeout = -1;
+            request = new RestRequest(Method.DELETE);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
+            response = client.Execute(request);
+            movieDto = JsonConvert.DeserializeObject<ApiSuccess<bool>>(response.Content);
+            Assert.IsTrue(movieDto.Success);
 
             client = new RestClient($"https://localhost:44343/Movie/GetByPrefix?prefix=test");
             client.Timeout = -1;
             request = new RestRequest(Method.GET);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             response = client.Execute(request);
             movieDto = JsonConvert.DeserializeObject<ApiError>(response.Content);
-            Assert.IsFalse(movieDto.Success);
+            Assert.IsTrue(movieDto.Success);
+            Assert.AreEqual(((JArray)movieDto.Data).Count, 1);
         }
 
         [Test]
-        public void GetMoviesByOnShowTest()
+        public void GetMoviesByAdvanceTest()
         {
             // Prerequisite - Pass
             int movieId = -1;
             var client = new RestClient("https://localhost:44343/Movie/Add?title=title1&director=director1&genre=genre&cast=cast1&year=2021&award=award1");
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             IRestResponse response = client.Execute(request);
             ApiResult movieDto = JsonConvert.DeserializeObject<ApiSuccess<int>>(response.Content);
             movieId = (int)movieDto.Data;
 
-            client = new RestClient($"https://localhost:44343/Movie/GetByOnShow?isOnShow=false");
+            client = new RestClient($"https://localhost:44343/Movie/GetByAdvanceSearch?title=title&director=&genre=&cast=&year=-1&award=&isOnShow=2");
             client.Timeout = -1;
             request = new RestRequest(Method.GET);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             response = client.Execute(request);
             movieDto = JsonConvert.DeserializeObject<ApiSuccess<MovieInfo[]>>(response.Content);
             MovieInfo[] movieInfos = (MovieInfo[])movieDto.Data;
             Assert.IsTrue(movieDto.Success);
-            Assert.AreEqual(movieInfos[0].Title, "title1");
+            Assert.IsTrue(movieInfos.Length > 0);
 
-            client = new RestClient($"https://localhost:44343/Movie/GetByOnShow?isOnShow=true");
+            client = new RestClient($"https://localhost:44343/Movie/Delete?ids={movieId}");
             client.Timeout = -1;
-            request = new RestRequest(Method.GET);
+            request = new RestRequest(Method.DELETE);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             response = client.Execute(request);
-            movieDto = JsonConvert.DeserializeObject<ApiError>(response.Content);
-            Assert.IsFalse(movieDto.Success);
-        }
-
-        [Test]
-        public void GetMoviesByPrefixOnShowTest()
-        {
-            // Prerequisite - Pass
-            int movieId = -1;
-            var client = new RestClient("https://localhost:44343/Movie/Add?title=title1&director=director1&genre=genre&cast=cast1&year=2021&award=award1");
-            client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
-            IRestResponse response = client.Execute(request);
-            ApiResult movieDto = JsonConvert.DeserializeObject<ApiSuccess<int>>(response.Content);
-            movieId = (int)movieDto.Data;
-
-            client = new RestClient($"https://localhost:44343/Movie/GetByPrefixOnShow?prefix=title&isOnShow=false");
-            client.Timeout = -1;
-            request = new RestRequest(Method.GET);
-            response = client.Execute(request);
-            movieDto = JsonConvert.DeserializeObject<ApiSuccess<MovieInfo[]>>(response.Content);
-            MovieInfo[] movieInfos = (MovieInfo[])movieDto.Data;
+            movieDto = JsonConvert.DeserializeObject<ApiSuccess<bool>>(response.Content);
             Assert.IsTrue(movieDto.Success);
-            Assert.AreEqual(movieInfos[0].Title, "title1");
-
-            client = new RestClient($"https://localhost:44343/Movie/GetByPrefixOnShow?prefix=test&isOnShow=false");
-            client.Timeout = -1;
-            request = new RestRequest(Method.GET);
-            response = client.Execute(request);
-            movieDto = JsonConvert.DeserializeObject<ApiError>(response.Content);
-            Assert.IsFalse(movieDto.Success);
         }
 
         [Test]
         public void GetMoviesAllTest()
         {
-            // Prerequisite - Pass
-            int movieId = -1;
-            var client = new RestClient("https://localhost:44343/Movie/Add?title=title1&director=director1&genre=genre&cast=cast1&year=2021&award=award1");
+            var client = new RestClient("https://localhost:44343/Movie/GetMoviesAll");
             client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest(Method.GET);
+            request.AddParameter("Authorization", string.Format("Bearer " + _token), ParameterType.HttpHeader);
             IRestResponse response = client.Execute(request);
-            ApiResult movieDto = JsonConvert.DeserializeObject<ApiSuccess<int>>(response.Content);
-            movieId = (int)movieDto.Data;
-
-            client = new RestClient("https://localhost:44343/Movie/GetMoviesAll");
-            client.Timeout = -1;
-            request = new RestRequest(Method.GET);
-            response = client.Execute(request);
-            movieDto = JsonConvert.DeserializeObject<ApiSuccess<MovieInfo[]>>(response.Content);
+            ApiResult movieDto = JsonConvert.DeserializeObject<ApiSuccess<MovieInfo[]>>(response.Content);
             MovieInfo[] movieInfos = (MovieInfo[])movieDto.Data;
             Assert.IsTrue(movieDto.Success);
-            Assert.AreEqual(movieInfos[0].Title, "title1");
-
-            // Prerequisite - Fail
-            client = new RestClient($"https://localhost:44343/Movie/Delete?ids={movieId}");
-            client.Timeout = -1;
-            request = new RestRequest(Method.DELETE);
-            response = client.Execute(request);
-            movieDto = JsonConvert.DeserializeObject<ApiSuccess<bool>>(response.Content);
-            Assert.IsTrue(movieDto.Success);
-
-            client = new RestClient("https://localhost:44343/Movie/GetMoviesAll");
-            client.Timeout = -1;
-            request = new RestRequest(Method.GET);
-            response = client.Execute(request);
-            movieDto = JsonConvert.DeserializeObject<ApiError>(response.Content);
-            Assert.IsFalse(movieDto.Success);
+            Assert.IsTrue(movieInfos.Length > 0);
         }
     }
 }

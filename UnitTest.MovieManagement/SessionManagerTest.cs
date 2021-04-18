@@ -3,14 +3,16 @@ using NUnit.Framework;
 using PROG8060_Group.Models;
 using PROG8060_Group.Models.DB;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Text;
 
 namespace UnitTest.MovieManagement
 {
     [TestFixture]
     public class SessionManagerTest
     {
-        public enum TestScenario 
+        public enum TestScenario
         {
             FAIL_BOOL_RETURN = 0,
             PASS_BOOL_RETURN = 1,
@@ -39,6 +41,7 @@ namespace UnitTest.MovieManagement
                     paramMock.Setup(m => m.Value).Returns((int)scenario % 2);
                     break;
                 case TestScenario.FAIL_OBJECT_RETURN:
+                    break;
                 case TestScenario.PASS_OBJECT_RETURN:
                     var adapterMock = new Mock<IDataAdapter>();
                     var dataSetMock = new Mock<DataSet>();
@@ -48,7 +51,7 @@ namespace UnitTest.MovieManagement
                     adapterMock.Setup(m => m.Fill(dataSetMock.Object));
                     break;
             }
-            
+
             return new SessionManager(connectionFactoryMock.Object);
         }
 
@@ -57,8 +60,8 @@ namespace UnitTest.MovieManagement
         {
             // Pass
             var sessionManager = GetSessionManager(TestScenario.PASS_BOOL_RETURN);
-            bool ret = sessionManager.Login("testUser1", "P@ssw0rd");
-            Assert.IsTrue(ret);
+            UserInfo ret = sessionManager.Login("testUser1", "P@ssw0rd");
+            Assert.AreEqual(ret.Name, "testUser1");
 
             // Fail
             sessionManager = GetSessionManager(TestScenario.FAIL_BOOL_RETURN);
@@ -135,16 +138,31 @@ namespace UnitTest.MovieManagement
         [Test]
         public void GetUserTest()
         {
-            // Pass
-            //var sessionManager = GetSessionManager(TestScenario.PASS_OBJECT_RETURN);
-            //UserInfo ret = sessionManager.GetUser("name");
-            //Assert.IsNull(ret);
+            var sessionManager = GetSessionManager(TestScenario.PASS_OBJECT_RETURN);
+            UserInfo ret = sessionManager.GetUser("name");
+            Assert.IsNull(ret);
 
-            //// Fail
-            var sessionManager = GetSessionManager(TestScenario.FAIL_OBJECT_RETURN);
+            // Fail
+            sessionManager = GetSessionManager(TestScenario.FAIL_OBJECT_RETURN);
             Assert.That(() => sessionManager.GetUser("name"),
                               Throws.TypeOf<Exception>()
-                                    .With.Message.EqualTo("Unable to get user name. Dataset table fails"));
+                                    .With.Message.EqualTo("Unable to get user name. Object reference not set to an instance of an object."));
+
+        }
+
+        [Test]
+        public void GetUsersAllTest()
+        {
+            // Pass
+            var sessionManager = GetSessionManager(TestScenario.PASS_OBJECT_RETURN);
+            UserInfo ret = sessionManager.GetUser("name");
+            Assert.IsNull(ret);
+
+            // Fail
+            sessionManager = GetSessionManager(TestScenario.FAIL_OBJECT_RETURN);
+            Assert.That(() => sessionManager.GetUsersAll(),
+                              Throws.TypeOf<Exception>()
+                                    .With.Message.EqualTo("Unable to get movie (all)."));
 
         }
     }
