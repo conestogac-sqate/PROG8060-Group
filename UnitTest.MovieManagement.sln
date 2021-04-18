@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.MovieManagement", "Backend.MovieManagement\Backend.MovieManagement.csproj", "{578AFFFA-9C13-46BB-9543-E7A4E424E1BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest.MovieManagement", "UnitTest.MovieManagement\UnitTest.MovieManagement.csproj", "{4AF648FB-C3F7-48D0-83FA-BAD5C2DEA79F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{578AFFFA-9C13-46BB-9543-E7A4E424E1BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{578AFFFA-9C13-46BB-9543-E7A4E424E1BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{578AFFFA-9C13-46BB-9543-E7A4E424E1BB}.Debug|x64.ActiveCfg = Debug|x64
+		{578AFFFA-9C13-46BB-9543-E7A4E424E1BB}.Debug|x64.Build.0 = Debug|x64
+		{578AFFFA-9C13-46BB-9543-E7A4E424E1BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{578AFFFA-9C13-46BB-9543-E7A4E424E1BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{578AFFFA-9C13-46BB-9543-E7A4E424E1BB}.Release|x64.ActiveCfg = Release|x64
+		{578AFFFA-9C13-46BB-9543-E7A4E424E1BB}.Release|x64.Build.0 = Release|x64
+		{4AF648FB-C3F7-48D0-83FA-BAD5C2DEA79F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AF648FB-C3F7-48D0-83FA-BAD5C2DEA79F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AF648FB-C3F7-48D0-83FA-BAD5C2DEA79F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4AF648FB-C3F7-48D0-83FA-BAD5C2DEA79F}.Debug|x64.Build.0 = Debug|Any CPU
+		{4AF648FB-C3F7-48D0-83FA-BAD5C2DEA79F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AF648FB-C3F7-48D0-83FA-BAD5C2DEA79F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AF648FB-C3F7-48D0-83FA-BAD5C2DEA79F}.Release|x64.ActiveCfg = Release|Any CPU
+		{4AF648FB-C3F7-48D0-83FA-BAD5C2DEA79F}.Release|x64.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0FBC21A8-995F-4DCB-8C0E-A65D797E7B70}
+	EndGlobalSection
+EndGlobal
