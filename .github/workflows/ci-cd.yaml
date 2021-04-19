@@ -2,7 +2,8 @@ name: Movie Management CICD
 
 on:
   push:
-    - main
+    branches:
+      - main
 
 jobs:
   build:
