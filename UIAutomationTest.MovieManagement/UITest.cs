@@ -13,14 +13,14 @@ namespace UIAutomationTest.MovieManagement
     [TestFixture]
     public class UITest
     {
-        private const string PATH_APP = @"C:\Users\Administrator\Desktop\prog8060\PROG8060-Group\Frontend.MovieManagement\bin\Debug\UI.MovieManagement.exe";
+        private string PATH_APP = @"\Frontend.MovieManagement\bin\Debug\UI.MovieManagement.exe";
         private const string PATH_WIN_DRIVER = "http://127.0.0.1:4723";
 
         private WindowsDriver<WindowsElement> Initialize()
         {
             WindowsDriver<WindowsElement> session;
             AppiumOptions desiredCapabilities = new AppiumOptions();
-            desiredCapabilities.AddAdditionalCapability("app", PATH_APP);
+            desiredCapabilities.AddAdditionalCapability("app", Environment.CurrentDirectory + PATH_APP);
             session = new WindowsDriver<WindowsElement>(new Uri(PATH_WIN_DRIVER), desiredCapabilities);
             return session;
         }
@@ -49,7 +49,7 @@ namespace UIAutomationTest.MovieManagement
             Assert.AreEqual(session.WindowHandles.Count, 1);
             // Main Page
             session.SwitchTo().Window(session.WindowHandles.Last());
-            WindowsElement eUser = session.FindElementByAccessibilityId("btnUser");
+            WindowsElement eUser = session.FindElementByAccessibilityId("btnUser_text");
             Assert.AreEqual(eUser.Text, username);
 
             WindowsElement eClose = session.FindElementByName("Close");
