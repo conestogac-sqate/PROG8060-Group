@@ -1,4 +1,4 @@
-name: Movie Management CICD
+name: Automation Testing
 
 on:
   push:
