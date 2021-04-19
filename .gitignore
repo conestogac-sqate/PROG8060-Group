@@ -370,3 +370,8 @@ FodyWeavers.xsd
 *.tlog
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio
+*.json
+*.props
+*.targets
+*.cache
+obj
