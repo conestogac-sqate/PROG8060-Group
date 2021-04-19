@@ -7,25 +7,25 @@
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         Title="AddEditWindow" Height="450" Width="500">
-    <Grid>
-        <Label x:Name="lblSubHeader" Content="Movie Management System" HorizontalAlignment="Left" Margin="159,30,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblHeader" Content="/{Create/Edit/} The Movie" HorizontalAlignment="Left" Margin="192,61,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblTitle" Content="*Title" HorizontalAlignment="Left" Margin="88,109,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtTitle" HorizontalAlignment="Left" Height="23" Margin="159,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
-        <Label x:Name="lblDirector" Content="*Director" HorizontalAlignment="Left" Margin="88,137,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtDirector" HorizontalAlignment="Left" Height="23" Margin="159,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
-        <Label x:Name="lblGenre" Content="*Genre" HorizontalAlignment="Left" Margin="88,165,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtGenre" HorizontalAlignment="Left" Height="23" Margin="159,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
-        <Label x:Name="lblCast" Content="Cast" HorizontalAlignment="Left" Margin="88,194,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtCast" HorizontalAlignment="Left" Height="23" Margin="159,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
-        <Label x:Name="lblYear" Content="*Year" HorizontalAlignment="Left" Margin="88,222,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtYear" HorizontalAlignment="Left" Height="23" Margin="159,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" PreviewTextInput="NumberValidationTextBox"/>
-        <Label x:Name="lblAwards" Content="Awards" HorizontalAlignment="Left" Margin="88,250,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtAwards" HorizontalAlignment="Left" Height="23" Margin="159,253,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
-        <RadioButton x:Name="rBtnNotPlaying" Content="Not Playing" HorizontalAlignment="Left" Margin="176,306,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <RadioButton x:Name="rBtnNowPlaying" Content="Now Playing" HorizontalAlignment="Left" Margin="281,306,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblPlayingStatus" Content="Playing Status" HorizontalAlignment="Left" Margin="51,299,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnSubmit" Content="/{Add/Edit/} Movie" HorizontalAlignment="Left" Margin="225,346,0,0" VerticalAlignment="Top" Width="75" Click="btnSubmit_Click"/>
+    <Grid Background="#F4ECD9">
+        <Label FontFamily="Comic Sans MS" FontSize="24" x:Name="lblSubHeader" Foreground="#686868" Content="Movie Management System" HorizontalAlignment="Left" Margin="88,29,0,0" VerticalAlignment="Top"/>
+        <Label FontFamily="Comic Sans MS" FontSize="16" Foreground="#686868" x:Name="lblHeader" Content="/{Create/Edit/} The Movie" HorizontalAlignment="Left" Margin="162,72,0,0" VerticalAlignment="Top"/>
+        <Label Foreground="#686868" FontFamily="Leelawadee UI" x:Name="lblTitle" Content="*Title" HorizontalAlignment="Left" Margin="88,109,0,0" VerticalAlignment="Top"/>
+        <TextBox Background="#FDFBF7" x:Name="txtTitle" HorizontalAlignment="Left" Height="23" Margin="159,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
+        <Label Foreground="#686868" FontFamily="Leelawadee UI" x:Name="lblDirector" Content="*Director" HorizontalAlignment="Left" Margin="88,137,0,0" VerticalAlignment="Top"/>
+        <TextBox Background="#FDFBF7" x:Name="txtDirector" HorizontalAlignment="Left" Height="23" Margin="159,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
+        <Label Foreground="#686868" FontFamily="Leelawadee UI" x:Name="lblGenre" Content="*Genre" HorizontalAlignment="Left" Margin="88,165,0,0" VerticalAlignment="Top"/>
+        <TextBox Background="#FDFBF7" x:Name="txtGenre" HorizontalAlignment="Left" Height="23" Margin="159,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
+        <Label Foreground="#686868" FontFamily="Leelawadee UI" x:Name="lblCast" Content="Cast" HorizontalAlignment="Left" Margin="88,194,0,0" VerticalAlignment="Top"/>
+        <TextBox Background="#FDFBF7" x:Name="txtCast" HorizontalAlignment="Left" Height="23" Margin="159,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
+        <Label Foreground="#686868" FontFamily="Leelawadee UI" x:Name="lblYear" Content="*Year" HorizontalAlignment="Left" Margin="88,222,0,0" VerticalAlignment="Top"/>
+        <TextBox Background="#FDFBF7" x:Name="txtYear" HorizontalAlignment="Left" Height="23" Margin="159,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" PreviewTextInput="NumberValidationTextBox"/>
+        <Label Foreground="#686868" FontFamily="Leelawadee UI" x:Name="lblAwards" Content="Awards" HorizontalAlignment="Left" Margin="88,250,0,0" VerticalAlignment="Top"/>
+        <TextBox Background="#FDFBF7" x:Name="txtAwards" HorizontalAlignment="Left" Height="23" Margin="159,253,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
+        <RadioButton Foreground="#686868" FontFamily="Leelawadee UI" x:Name="rBtnNotPlaying" Content="Not Playing" HorizontalAlignment="Left" Margin="176,306,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <RadioButton Foreground="#686868" FontFamily="Leelawadee UI" x:Name="rBtnNowPlaying" Content="Now Playing" HorizontalAlignment="Left" Margin="281,306,0,0" VerticalAlignment="Top"/>
+        <Label Foreground="#686868" FontFamily="Leelawadee UI" x:Name="lblPlayingStatus" Content="Playing Status" HorizontalAlignment="Left" Margin="51,299,0,0" VerticalAlignment="Top"/>
+        <Button Background="#6982A9" BorderBrush="#6E87AD" Foreground="#FFFFFF" FontFamily="Gadugi" FontWeight="Bold" x:Name="btnSubmit" Content="/{Add/Edit/} Movie" HorizontalAlignment="Left" Margin="176,343,0,0" VerticalAlignment="Top" Width="134" Click="btnSubmit_Click" Height="37"/>
 
     </Grid>
 </Window>

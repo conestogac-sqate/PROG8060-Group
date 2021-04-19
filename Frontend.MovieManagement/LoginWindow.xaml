@@ -7,15 +7,15 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Title="LoginWindow" Height="350" Width="450">
-    <Grid>
-        <Label x:Name="lblUsername" Content="Username" HorizontalAlignment="Left" Margin="26,108,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblPassword" Content="Password" HorizontalAlignment="Left" Margin="26,169,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblWelcome" Content="Welcome" HorizontalAlignment="Left" Margin="174,39,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblTitle" Content="Movie Management System" HorizontalAlignment="Left" Margin="128,70,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="23" Margin="39,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="363" Text=""/>
-        <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="174,256,0,0" VerticalAlignment="Top" Width="75" Click="btnLogin_Click"/>
-        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Margin="39,200,0,0" VerticalAlignment="Top" Width="363" Height="21"/>
+        Title="Login" Height="350" Width="450">
+    <Grid Background="#F4ECD9">
+        <Label x:Name="lblUsername" Foreground="#686868" Content="Username" HorizontalAlignment="Left" Margin="110,104,0,0" VerticalAlignment="Top" FontFamily="Leelawadee UI"/>
+        <Label x:Name="lblPassword" Foreground="#686868" Content="Password" HorizontalAlignment="Left" Margin="110,169,0,0" VerticalAlignment="Top" FontFamily="Leelawadee UI"/>
+        <Label Foreground="#686868" x:Name="lblWelcome" Content="Welcome" HorizontalAlignment="Left" Margin="153,19,0,0" VerticalAlignment="Top" FontFamily="Ink Free" FontSize="36"/>
+        <Label Foreground="#686868" x:Name="lblTitle" Content="Movie Management System" HorizontalAlignment="Left" Margin="67,57,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="24"/>
+        <TextBox Background="#FDFBF7" BorderBrush="#6E87AD" BorderThickness="0,0,0,3" x:Name="txtUsername" HorizontalAlignment="Left" Height="34" Margin="110,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="229" Text="" FontSize="18"/>
+        <Button Background="#6982A9" BorderBrush="#6E87AD" Foreground="#FFFFFF" x:Name="btnLogin" Content="LOGIN" HorizontalAlignment="Left" Margin="156,245,0,0" VerticalAlignment="Top" Width="129" Click="btnLogin_Click" RenderTransformOrigin="0.5,0.5" Height="35" FontFamily="Gadugi" FontWeight="Bold"/>
+        <PasswordBox Background="#FDFBF7" BorderBrush="#6E87AD" x:Name="txtPassword" HorizontalAlignment="Left" Margin="110,191,0,0" VerticalAlignment="Top" Width="229" Height="34" BorderThickness="0,0,0,3" FontSize="18"/>
 
     </Grid>
 </Window>

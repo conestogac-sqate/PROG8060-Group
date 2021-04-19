@@ -37,12 +37,14 @@ namespace UI.MovieManagement
             if (actionType == ActionType.Create)
             {
                 lblHeader.Content = "Add New Movie";
-                btnSubmit.Content = "Add MOVIE";
+                btnSubmit.Content = "ADD MOVIE";
+                this.Title = "Add Movie";
             }
             else
             {
                 lblHeader.Content = "Edit The Movie";
                 btnSubmit.Content = "EDIT MOVIE";
+                this.Title = "Edit Movie";
                 if (movieInfo == null) { MessageBox.Show("Unable to load movie info."); return; }
                 txtTitle.Text = movieInfo.Title;
                 txtDirector.Text = movieInfo.Director;

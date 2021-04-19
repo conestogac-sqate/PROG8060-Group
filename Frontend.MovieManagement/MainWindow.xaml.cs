@@ -52,9 +52,11 @@ namespace UI.MovieManagement
         private void OnLoginStatusCallback(UserInfo userInfo, bool isLogin)
         {
             _loginWindow.Close();
-            btnUser.Content = Config.Username = userInfo.Name;
+            btnUser_text.Content = Config.Username = userInfo.Name;
             Config.IsAdmin = userInfo.CanCreate && userInfo.CanRead && userInfo.CanUpdate && userInfo.CanDelete;
-            txtSearch.IsEnabled = dMovies.IsEnabled = btnUser.IsEnabled = btnAddMovie.IsEnabled = true;
+            txtSearch.IsEnabled = dMovies.IsEnabled = true; 
+            btnUser.Visibility = btnUser_text.Visibility = btnAddMovie.Visibility = Visibility.Visible;
+            btnSearchAdvance.IsEnabled = true;
 
             if (Config.IsAdmin)
             {
@@ -62,6 +64,7 @@ namespace UI.MovieManagement
                 colEdit.Visibility = Visibility.Visible;
                 colDelete.Visibility = Visibility.Visible;
                 btnUser.Click += btnUser_Click;
+                btnUser_text.Click += btnUser_Click;
             }
 
             LoadMovies();

@@ -22,7 +22,7 @@ namespace UI.MovieManagement
             try
             {
                 ApiSuccess<UserInfo> ret = JsonConvert.DeserializeObject<ApiSuccess<UserInfo>>(response.Content);
-                Config.Token = ((UserInfo)ret.Data).Token;
+                if (ret != null && ret.Data != null) { Config.Token = ((UserInfo)ret.Data).Token; }
                 return ret;
             }
             catch

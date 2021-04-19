@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:UI.MovieManagement"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Label x:Name="lblHeader" Content="Movie Management System" HorizontalAlignment="Left" Margin="65,24,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="24" Margin="137,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" IsEnabled="False" TextChanged="txtSearch_TextChanged"/>
-        <Button x:Name="btnAddMovie" Content="Add New Movie" HorizontalAlignment="Left" Margin="628,72,0,0" VerticalAlignment="Top" Width="113" IsEnabled="False" Click="btnAddMovie_Click"/>
-        <DataGrid x:Name="dMovies" HorizontalAlignment="Left" Height="282" Margin="65,99,0,0" VerticalAlignment="Top" Width="676" IsEnabled="False"  ItemsSource="{Binding _movieList}" AutoGenerateColumns="False" IsReadOnly="True">
+        Title="Movie Management" Height="450" Width="800">
+    <Grid Background="#F4ECD9">
+        <Label FontFamily="Comic Sans MS" FontSize="24" Foreground="#686868" x:Name="lblHeader" Content="Movie Management System" HorizontalAlignment="Left" Margin="65,24,0,0" VerticalAlignment="Top"/>
+        <TextBox Background="#FDFBF7" x:Name="txtSearch" HorizontalAlignment="Left" Height="24" Margin="137,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" IsEnabled="False" TextChanged="txtSearch_TextChanged"/>
+        <Button Background="#6982A9" BorderBrush="#6E87AD" Foreground="#FFFFFF" FontFamily="Gadugi" FontWeight="Bold" x:Name="btnAddMovie" Content="Add Movie" HorizontalAlignment="Left" Margin="628,62,0,0" VerticalAlignment="Top" Width="113" Visibility="Hidden" Click="btnAddMovie_Click" Height="30"/>
+        <DataGrid Background="#FDFBF7" x:Name="dMovies" HorizontalAlignment="Left" Height="282" Margin="65,99,0,0" VerticalAlignment="Top" Width="676"  ItemsSource="{Binding _movieList}" AutoGenerateColumns="False" IsReadOnly="True" IsEnabled="False">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn IsReadOnly="true" Binding="{Binding IsOnShow}" x:Name="colOnShow" ClipboardContentBinding="{x:Null}" Header="On Show" HeaderStringFormat="IsOnShow"/>
                 <DataGridTextColumn Binding="{Binding Id}" x:Name="colId" ClipboardContentBinding="{x:Null}" Header="Id" HeaderStringFormat="Id" Visibility="Hidden"/>
@@ -24,22 +24,22 @@
                 <DataGridTemplateColumn Width="50" x:Name="colEdit" Visibility="Hidden">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Height="30" Width="50" Content="Edit" Click="btnEditMovie_Click" CommandParameter="{Binding Id}" />
+                            <Button Background="#6982A9" BorderBrush="#6E87AD" Foreground="#FFFFFF"  Height="30" Width="50" Content="Edit" Click="btnEditMovie_Click" CommandParameter="{Binding Id}" FontFamily="Gadugi" FontWeight="Bold"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Width="50" x:Name="colDelete" Visibility="Hidden">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Height="30" Width="50" Content="Delete" Click="btnRemoveMovie_Click" CommandParameter="{Binding Id}" />
+                            <Button Background="#6982A9" BorderBrush="#6E87AD" Foreground="#FFFFFF"  Height="30" Width="50" Content="Delete" Click="btnRemoveMovie_Click" CommandParameter="{Binding Id}" FontFamily="Gadugi" FontWeight="Bold"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
-
         </DataGrid>
-        <Button x:Name="btnUser" Content="/{Username/}" HorizontalAlignment="Left" Margin="666,29,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False"/>
-        <Label x:Name="lblSearch" Content="Search:" HorizontalAlignment="Left" Margin="65,68,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnSearchAdvance" FontFamily="Segoe MDL2 Assets" Content="&#xE7C5;" HorizontalAlignment="Left" Margin="312,70,0,0" VerticalAlignment="Top" Width="22" Height="23" Click="btnSearchAdvance_Click"/>
+        <Button Foreground="#686868" Background="#F4ECD9" FontFamily="Segoe MDL2 Assets" Content="&#xE77B;" x:Name="btnUser" HorizontalAlignment="Left" Margin="614,10,0,0" VerticalAlignment="Top" Width="38" Height="38" FontSize="36" BorderThickness="0" Visibility="Hidden"/>
+        <Button Foreground="#686868" Background="#F4ECD9" Content="/{Username/}" x:Name="btnUser_text" HorizontalAlignment="Left" Margin="657,10,0,0" VerticalAlignment="Top" Width="84" Height="38" BorderThickness="0" Visibility="Hidden"/>
+        <Label Foreground="#686868" FontFamily="Leelawadee UI" x:Name="lblSearch" Content="Search:" HorizontalAlignment="Left" Margin="65,68,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnSearchAdvance" FontFamily="Segoe MDL2 Assets" Content="&#xE7C5;" HorizontalAlignment="Left" Margin="312,70,0,0" VerticalAlignment="Top" Width="22" Height="23" Click="btnSearchAdvance_Click" IsEnabled="False"/>
     </Grid>
 </Window>
