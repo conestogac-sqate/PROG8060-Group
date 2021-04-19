@@ -1,0 +1,24 @@
+name: Movie Management CICD
+
+on:
+  push:
+    - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.301'
+
+      - name: Restore dependencies
+        run: dotnet restore Backend.MovieManagement
+
+      - name: Build backend service
+        run: dotnet build -c Release --no-restore Backend.MovieManagement
+
