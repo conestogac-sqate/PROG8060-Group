@@ -20,7 +20,7 @@ jobs:
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       
       - name: Build Docker Image
-        run: docker build -t backend-moviemanagement:$(date+%s) .\Backend.MovieManagement.csproj
+        run: docker build -t backend-moviemanagement:$(git rev-parse --short HEAD) .\Backend.MovieManagement.csproj
 
       - name: Docker Push
         run: docker push ${{ secrets.DOCKER_USER }}/prog8060
