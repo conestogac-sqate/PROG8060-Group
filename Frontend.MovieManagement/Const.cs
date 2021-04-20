@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace UI.MovieManagement
 {
     public class Const
     {
-        public static string API_HOST = "https://localhost:44343";
+        public static string API_HOST = ConfigurationManager.AppSettings["api_host"];
 
         public static string API_LOGIN = "/Session/Login?username={0}&password={1}";
 
