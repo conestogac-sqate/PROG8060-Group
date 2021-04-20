@@ -8,19 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using PROG8060_Group.Models;
 using PROG8060_Group.Models.DB;
+using Backend.MovieManagement;
 
 namespace PROG8060_Group.Helpers
 {
     public class JwtMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly AppSettings _appSettings;
         private SessionManager _sessionManager;
 
-        public JwtMiddleware(RequestDelegate next, IOptions<AppSettings> appSettings)
+        public JwtMiddleware(RequestDelegate next)
         {
             _next = next;
-            _appSettings = appSettings.Value;
             _sessionManager = new SessionManager(new MySqlConnectionFactory());
         }
 
@@ -39,7 +38,7 @@ namespace PROG8060_Group.Helpers
             try
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
-                var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+                var key = Encoding.ASCII.GetBytes(Config.Secret);
                 tokenHandler.ValidateToken(token, new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
