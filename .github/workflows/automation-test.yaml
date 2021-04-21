@@ -24,4 +24,4 @@ jobs:
         run: dotnet build -c Release --no-restore Backend.MovieManagement
 
       - name: Run automated tests (Unit Test)
-        run: dotnet test -c Release --no-build UnitTest.MovieManagement
+        run: dotnet test -c Release UnitTest.MovieManagement
