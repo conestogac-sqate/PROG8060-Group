@@ -40,6 +40,6 @@
         <Button Foreground="#686868" Background="#F4ECD9" FontFamily="Segoe MDL2 Assets" Content="&#xE77B;" x:Name="btnUser" HorizontalAlignment="Left" Margin="614,10,0,0" VerticalAlignment="Top" Width="38" Height="38" FontSize="36" BorderThickness="0" Visibility="Hidden"/>
         <Button Foreground="#686868" Background="#F4ECD9" Content="/{Username/}" x:Name="btnUser_text" HorizontalAlignment="Left" Margin="657,10,0,0" VerticalAlignment="Top" Width="84" Height="38" BorderThickness="0" Visibility="Hidden"/>
         <Label Foreground="#686868" FontFamily="Leelawadee UI" x:Name="lblSearch" Content="Search:" HorizontalAlignment="Left" Margin="65,68,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnSearchAdvance" FontFamily="Segoe MDL2 Assets" Content="&#xE7C5;" HorizontalAlignment="Left" Margin="312,70,0,0" VerticalAlignment="Top" Width="22" Height="23" Click="btnSearchAdvance_Click" IsEnabled="False"/>
+        <Button ToolTip="Advance Search" x:Name="btnSearchAdvance" FontFamily="Segoe MDL2 Assets" Content="&#xE7C5;" HorizontalAlignment="Left" Margin="312,70,0,0" VerticalAlignment="Top" Width="22" Height="23" Click="btnSearchAdvance_Click" IsEnabled="False"/>
     </Grid>
 </Window>

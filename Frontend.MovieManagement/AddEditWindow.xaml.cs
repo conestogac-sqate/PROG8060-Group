@@ -65,7 +65,7 @@ namespace UI.MovieManagement
                string.IsNullOrEmpty(txtGenre.Text) ||
                string.IsNullOrEmpty(txtYear.Text))
             {
-                MessageBox.Show("Invalid Input");
+                MessageBox.Show("Invalid Input. Please make sure you have input \"Title\", \"Director\", \"Genre\", \"Cast\", \"Year\", \"Awards\"");
                 return;
             }
 
@@ -87,7 +87,7 @@ namespace UI.MovieManagement
             {
                 ret = APIController.RequestEditMovie(_movieInfo);
             }
-            if (!ret.Success) { MessageBox.Show("Unable to Submit Movie Infomation"); return; }
+            if (!ret.Success) { MessageBox.Show("Unable to Submit Movie Infomation. Please make sure you have input \"Title\", \"Director\", \"Genre\", \"Cast\", \"Year\", \"Awards\""); return; }
             if (_actionType == ActionType.Create)
             {
                 _movieInfo.Id = (int)ret.Data;
