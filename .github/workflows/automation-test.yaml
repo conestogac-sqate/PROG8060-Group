@@ -25,3 +25,4 @@ jobs:
 
       - name: Run automated tests (Unit Test)
         run: dotnet test -c Release UnitTest.MovieManagement
+
