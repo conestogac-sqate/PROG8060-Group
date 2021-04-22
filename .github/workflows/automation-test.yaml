@@ -23,6 +23,6 @@ jobs:
       - name: Build backend service
         run: dotnet build -c Release --no-restore Backend.MovieManagement
 
-      - name: Run automated tests (Unit Test)
+      - name: Run automated tests (Unit Test 3)
         run: dotnet test -c Release UnitTest.MovieManagement
 
