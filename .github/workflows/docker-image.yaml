@@ -33,4 +33,4 @@ jobs:
           tags: ${{ secrets.DOCKER_USER }}/prog8060
 
       - name: Verify
-        run: echo ${{ steps.docker_build.outputs.digest }} 
+        run: echo ${{ steps.docker_build.outputs.digest }}
